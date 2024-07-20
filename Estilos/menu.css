@@ -1,0 +1,160 @@
+/* Estilos para el el menu */
+.nm-principal {
+    padding: 1.5rem;
+    background-color: #fffa;
+}
+
+.nm-primario {
+    color: #000000;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.nm-titulo {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.nm-subtitulo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.nm-catalogo {
+    width: 100%;
+    position: relative;
+}
+
+.nm-catalogo i {
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+}
+.nm-catalogo i:active{
+    transform: translateY(-50%) scale(0.85);
+}
+.nm-catalogo i:first-child{
+    left: -22px;
+}
+.nm-catalogo i:last-child{
+    right: -22px;
+}
+.nm-catalogo .nm-grid{
+    background: #9e870310;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    height: 420px;
+}
+
+.nm-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.nm-grid.no-transition {
+    scroll-behavior: auto;
+}
+
+.nm-grid.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.nm-grid.dragging .nm-tarjeta {
+    cursor: grab;
+    user-select: none;
+}
+.nm-grid :where(.nm-tarjeta, .nm-imagen-tarjeta) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nm-catalogo{
+    display: grid;
+    grid-template-areas: 
+        "imagen-tarjeta"
+        "descripcion"
+        "precio";
+    grid-template-rows: 60% 8% 10% 8%;
+}  
+.nm-grid .nm-tarjeta {
+    scroll-snap-align: start;
+    height: 400px;
+    list-style: none;
+    background: #fff;
+    cursor: pointer;
+    padding-bottom: 5px;
+    flex-direction: column;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.nm-grid .nm-tarjeta .nm-imagen-tarjeta {
+    width: 80%;
+    margin: 10px 0;
+    height: 60%;
+    border-radius: 0.5rem 0.5rem;
+}
+
+.nm-tarjeta .nm-imagen-tarjeta img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+}
+
+.nm-grid .nm-tarjeta h3 {
+    font-size: 1.56rem;
+    margin: 2px 0 -14px;
+    line-height: 1.2;
+    }
+
+.nm-grid .nm-tarjeta .nm-descripcion {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+    color: #888888;
+    line-height: 1.2;
+}
+
+.nm-grid .nm-tarjeta .nm-precio {
+    margin: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+@media screen and (max-width: 900px) {
+    .nm-catalogo .nm-grid {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nm-catalogo .nm-grid {
+        grid-auto-columns: 100%;
+    }
+}

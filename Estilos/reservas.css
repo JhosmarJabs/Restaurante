@@ -1,0 +1,142 @@
+/* Estilos para el formulario de reservas */
+.contenedor-reserva {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+@media (min-width: 640px) {
+    .contenedor-reserva {
+    padding: 2rem;
+    }
+}
+@media (min-width: 920px) {
+    .contenedor-reserva {
+    padding: 2.5rem;
+    }
+}
+.rejilla-reserva {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 920px) {
+    .rejilla-reserva {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+.datos-formulario-reserva {
+    background: #3b82f6;
+    padding: 30px;
+    border: solid 2px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 30px;
+}
+
+.titulo-reserva {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.subtitulo-reserva {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.espacio-vertical-reserva > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+}
+.espacio-vertical-reserva button {
+    justify-items: center;
+}
+.etiqueta-reserva {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.input-reserva {
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
+    transition: background-color 0.2s;
+}
+.centrado-reserva {
+    justify-content: center;
+}
+.med-reserva {
+    width: 70%;
+}
+.max-reserva {
+    width: 90.4%;
+}
+
+.maximo-reserva {
+    width: 97.3%;
+}
+
+@media (min-width: 920px) {
+    .maximo-reserva {
+    width: 99%;
+    }
+}
+
+.boton-reserva {
+    background-color: #3b82f6;
+    color: white;
+}
+.boton-reserva:hover {
+    background-color: #154bc0;
+}
+.icono-reserva {
+    width: 1rem;
+    height: 1rem;
+}
+.datos-reservas-reserva {
+    background: #3b82f6;
+    padding: 30px;
+    border: solid 2px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 30px;
+}
+.contenedor-layout-reserva {
+    background-color: #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+.imagen-layout-reserva {
+    width: 100%;
+    height: auto;
+}
+.descripcion-reserva {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+.columnas-2-reserva {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.columnas-3-reserva {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.tabla-reserva {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-reserva th, .tabla-reserva td {
+    border: 1px solid #fff;
+    padding: 8px;
+    text-align: center;
+}
