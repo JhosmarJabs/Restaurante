@@ -1,5 +1,6 @@
         <main class="main">
             <h1 class="title">HUEJUTLA SABORES</h1>
+            <p>Entraste como clienteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
             <div class="grid">
                 <div class="card">
                     <div class="card-img" style="background-image: url('https://th.bing.com/th/id/OIP.ZVpX2IlmOEwMTpNkvGBaBQAAAA?rs=1&pid=ImgDetMain');"></div>

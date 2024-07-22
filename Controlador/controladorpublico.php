@@ -16,20 +16,42 @@ class controladorpublico
         $acceso = new clslogin();
         if (!empty($_POST))
         {
-            $usuario = $_POST['txtUsuario'];
-            $password = $_POST['txtPassword'];
-            $result = $acceso->ConsultaUsuario($usuario, $password);
+            $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : NULL;
+            $password = isset($_POST['txtPassword']) ? $_POST['txtPassword'] : NULL;
+            $result = $acceso->ConsultaUsuario($email, $password);
+            $datos = $acceso->ConsultarDatos($email);
+
+
+            // echo '<pre>';
+            // print_r($result);
+            // echo '</pre>';
+
+            // if ($result == true) {
+            // // Depurar el contenido de $result
+            // echo '<pre>';
+            // print_r('el resultado fue 1');
+            // echo '</pre>';
+            // }else{
+            // // Depurar el contenido de $result
+            // echo '<pre>';
+            // print_r('El resultado fue 0');
+            // echo '</pre>';
+            // }
+
+
+
             if ($result == true)
             {
                 session_start();
-                $_SESSION['id'] = $result['idcliente'];
-                $_SESSION['nombre'] = $result['vchnombre'];
+                $_SESSION['id'] = $datos['idUsuario'];
+                $_SESSION['nombre'] = $datos['vchUsuario'];
                 $vista = "Vistas/Inicio/frmcontenidocliente.php";
                 include_once("Vistas/frmcliente.php");
             }
             else
             {
-                header("Location: index.php");
+                $vista = "Vistas/Usuario/login.php";
+                include_once("Vistas/frmpublica.php");
             }
         }
         else

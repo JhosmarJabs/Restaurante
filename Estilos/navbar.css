@@ -31,6 +31,11 @@ body {
     color: #ffe607;
     font-size: 1rem;
 }
+.blanco {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1rem;
+}
 
 .link-navbar a:hover {
     color: orange;

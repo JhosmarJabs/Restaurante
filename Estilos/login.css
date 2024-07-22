@@ -1,3 +1,9 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* Estilos para Inicio de Sesion */
 .container-login {
     min-height: calc(100vh - 60px);
@@ -6,6 +12,7 @@
     align-items: center;
     background-size: cover;
     background-position: center;
+    box-sizing: border-box;
 }   
 
 .wrapper {
@@ -25,7 +32,7 @@
 }
 
 .wrapper.active {
-    height: 520px;
+    height: 590px;
 }
 
 .wrapper .form-box {
