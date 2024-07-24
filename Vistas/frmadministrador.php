@@ -1,3 +1,9 @@
+<!-- Autenticacion -->
+<?php
+    if (!isset($_SESSION['id'])) {
+    header("Location: index.php"); 
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,33 +15,34 @@
     <link rel="stylesheet" href="Estilos/principalhtml.css">
     <link rel="stylesheet" href="Estilos/navbar.css">
     <link rel="stylesheet" href="Estilos/footer.css">
-    <link rel="stylesheet" href="Estilos/inicio.css">
+    <link rel="stylesheet" href="Estilos/altas.css">
     <!-- <link rel="stylesheet" href="Estilos/menu.css"> -->
-    <link rel="stylesheet" href="Estilos/login.css">
     <!-- <link rel="stylesheet" href="Estilos/reservas.css"> -->
+    <!-- <link rel="stylesheet" href="Estilos/principal.css"> -->
     <title>Huejutla Sabores</title>
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo"><a class="amarillo" href="#">Huejutla Sabores</a></div>
+            <a class="amarillo"><?php echo 'Bienvenido '.$_SESSION['nombre'].' Administrador' ?></a>
             <ul class="links">
-                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Inicio</a></li>
-                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=menu">Menu</a></li>
-                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion">Reserva</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=inicio">Inicio</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=menu">Menu</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=altas">Altas</a></li>
                 <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
             </ul>
-            <a href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion" class="action_btn">Iniciar Sesion</a>
+            <a href="/restaurante/index?clase=controladoradministrador&metodo=cerrar" class="action_btn">Cerrar Sesion</a>
             <div class="toggle_btn">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
         <div class="dropdown_menu">
-            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Inicio</a></li>
-            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=menu">Menu</a></li>
-            <li class="link-navbar"><a class="amarillo" href="restaurante/index?clase=controladorpublico&metodo=iniciarsesion">Reserva</a></li>
-            <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
-            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion" class="action_btn">Iniciar Sesion</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=inicio">Inicio</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=menu">Menu</a></li>
+            <li class="link-navbar"><a class="amarillo" href="#services">Reserva</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=altas">Altas</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=cerrar" class="action_btn">Cerrar Sesion</a></li>
         </div>
     </header>
     <main>

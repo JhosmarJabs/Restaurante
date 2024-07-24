@@ -1,0 +1,176 @@
+.flex-columna-alto-min {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenido-principal {
+  flex: 1;
+  background-color: #f7f7f7;
+  padding: 1.5rem;
+}
+
+.contenedor-pestanas {
+  display: flex;
+  flex-direction: column;
+}
+
+.lista-pestanas {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.pestana {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.pestana:hover {
+  background-color: #f5f5f5;
+}
+
+.pestana.activa {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+.contenido-pestana {
+  display: none;
+}
+
+.contenido-pestana.activa {
+  display: block;
+}
+
+.cabecera-seccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.titulo-seccion {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.boton-accion {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.boton-accion:hover {
+  background-color: #555;
+}
+
+.tarjeta {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th, .tabla td {
+  text-align: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: #e0e0e0;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.etiqueta-secundaria {
+  background-color: #ccc;
+}
+
+.formulario-oculto {
+  display: none;
+}
+
+.formulario-activo {
+  display: block;
+}
+
+.formularioAltas {
+  margin-bottom: 1rem;
+}
+
+.formularioAltas label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.formularioAltas input, .formularioAltas select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.formularioAltas button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.formularioAltas button:hover {
+  background-color: #555;
+}
+.boton{
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+
+.boton a{
+  text-decoration: none;
+  color: #111;
+}
+@media (max-width: 768px) {
+  .cabecera-seccion {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .boton-accion {
+    margin-top: 1rem;
+  }
+  .contenido-encabezado {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navegacion {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+.tabla img {
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}

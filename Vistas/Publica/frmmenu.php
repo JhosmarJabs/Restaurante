@@ -78,6 +78,31 @@
                     </ul>
                     <i class="fa-solid fa-angle-right" data-catalogo="postres"></i>
                 </div>
+                <h2 class="nm-subtitulo">Bebidas</h2>
+                <div class="nm-catalogo" id="principales-catalogo">
+                    <i class="fa-solid fa-angle-left" data-catalogo="principales"></i>
+                    <ul class="nm-grid" id="principales-grid">
+                        <li class="nm-tarjeta">
+                            <img src="images.png" alt="imgTmp" class="nm-imagen-tarjeta">
+                            <h3 class="nm-nombre">Coca-cola</h3>
+                            <p class="nm-descripcion">.</p>
+                            <p class="nm-precio">$8.99</p>
+                        </li>
+                        <li class="nm-tarjeta">
+                            <img src="../../img/pv.jpg" alt="imgTmp" class="nm-imagen-tarjeta">
+                            <h3 class="nm-nombre">Bruschetta</h3>
+                            <p class="nm-descripcion">Pan tostado con tomates cherry, ajo, albahaca y aceite de oliva.</p>
+                            <p class="nm-precio">$6.99</p>
+                        </li>
+                        <li class="nm-tarjeta">
+                            <img src="../../img/pv.jpg" alt="imgTmp" class="nm-imagen-tarjeta">
+                            <h3 class="nm-nombre">Alitas de Pollo</h3>
+                            <p class="nm-descripcion">Alitas de pollo fritas y bañadas en salsa búfalo.</p>
+                            <p class="nm-precio">$9.99</p>
+                        </li>
+                    </ul>
+                    <i class="fa-solid fa-angle-right" data-catalogo="principales"></i>
+                </div>
             </section>
             <!-- Resto de las secciones aquí -->
         </div>

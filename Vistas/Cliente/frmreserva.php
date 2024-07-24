@@ -1,11 +1,16 @@
-    <div class="contenedor-reserva">
+<div class="contenedor-reserva">
         <div class="rejilla-reserva">
             <form class="datos-formulario-reserva">
                 <h1 class="titulo-reserva">Formulario de reservacion</h1>
                 <div class="espacio-vertical-reserva">
-                    <div id="1">
-                        <label for="nombre" class="etiqueta-reserva">Nombre del cliente</label>
-                        <input class="input-reserva max-reserva" type="text">
+                    <label for="nombre" class="etiqueta-reserva">Nombre del cliente</label>
+                    <div class="rejilla-reserva columnas-2-reserva gap-pequeno-reserva">
+                        <div id="1">
+                            <input class="input-reserva etiqueta-reserva" type="text" placeholder="Nombre(s)">
+                        </div>
+                        <div id="1">
+                            <input class="input-reserva etiqueta-reserva" type="text" placeholder="Apellido(s)">
+                        </div>
                     </div>
                     <div id="2">
                         <label for="telefono" class="etiqueta-reserva">Numero de telefono</label>
@@ -17,13 +22,13 @@
                     </div>
                     <div class="rejilla-reserva columnas-2-reserva gap-pequeno-reserva">
                         <div id="4">
-                        <label for="hora-inicio" class="etiqueta-reserva">Hora de Inicio</label>
-                        <input class="input-reserva" type="time">
-                    </div>
+                            <label for="hora-inicio" class="etiqueta-reserva">Hora de Inicio</label>
+                            <input class="input-reserva" type="time">
+                        </div>
                         <div id="5">
-                        <label for="hora-final" class="etiqueta-reserva">Hora de Final</label>
-                        <input class="input-reserva" type="time">
-                    </div>
+                            <label for="hora-final" class="etiqueta-reserva">Hora de Final</label>
+                            <input class="input-reserva" type="time">
+                        </div>
                     </div>
                     <div id="6">
                         <label for="ocasion" class="etiqueta-reserva">Ocacion</label>

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+  /* cabeza */
+header {
+    position: relative;
+    padding: 0 2rem;
+    background-color: #000;
+}
+
+body {
+    background-image: url('../img/fondo-restaurante.webp');
+    height: 100vh;
+    background-color: #0000000a;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+}

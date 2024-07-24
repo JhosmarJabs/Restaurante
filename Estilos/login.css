@@ -1,9 +1,3 @@
-* {
-    font-family: 'Times New Roman', Times, serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 /* Estilos para Inicio de Sesion */
 .container-login {
     min-height: calc(100vh - 60px);
@@ -32,10 +26,11 @@
 }
 
 .wrapper.active {
-    height: 590px;
+    height: 690px;
 }
 
 .wrapper .form-box {
+    box-sizing: border-box;
     width: 100%;
     padding: 40px;
 }

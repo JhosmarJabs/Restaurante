@@ -8,56 +8,59 @@
             <form action="/restaurante/index?clase=controladorpublico&metodo=login" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" name="txtEmailI" id="" required>
+                    <label>Correo</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="bag-outline"></ion-icon></span>
+                    <input type="password" name="txtPasswordI" id="" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox" name="txtremember" id=""> Recordar</label>
+                    <a href="#">Olvidaste la contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Iniciar Sesion</button>
+                <div class="login-register">
+                    <p>Aun no tienes cuenta? <a href="#" class="register-link">Resgistrate</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Registro</h2>
+            <form action="/restaurante/index?clase=controladorpublico&metodo=register" method="POST">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="txtNombre" id="" required>
+                    <label>Nombre</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="txtApellido" id="" required>
+                    <label>Apellidos</label>
+                </div>
+                <div class="input-box">
+                        <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
+                        <input type="text" name="txtTelefono" required>
+                        <label>Telefono</label>
+                    </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                     <input type="email" name="txtEmail" id="" required>
-                    <label>Email</label>
+                    <label>Correo</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="bag-outline"></ion-icon></span>
                     <input type="password" name="txtPassword" id="" required>
-                    <label>Password</label>
+                    <label>Contraseña</label>
                 </div>
                 <div class="remember-forgot">
-                    <label><input type="checkbox" name="txtremember" id=""> Remember me</label>
-                    <a href="#">Forgot Password?</a>
+                    <label><input type="checkbox" name="txtconditions" id="" require> Acepto los terminos y condiciones</label>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Registrarme</button>
                 <div class="login-register">
-                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    <p>Ya tienes una cuenta? <a href="#" class="login-link">Iniciar sesion</a></p>
                 </div>
-            </form>
-        </div>
-    
-        <div class="form-box register">
-            <h2>Registrate</h2>
-            <form action="#">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person"></ion-icon></span>
-                    <input type="text" name="txtuser" id="" required>
-                    <label>User</label>
-                </div>
-                <div class="input-box">
-                        <span class="icon"><ion-icon name="call-outline"></ion-icon></span>
-                        <input type="text" name="txtcall" required>
-                        <label>phone</label>
-                    </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" name="txtemail" id="" required>
-                    <label>Email</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="bag-outline"></ion-icon></span>
-                    <input type="password" name="txtpassword" id="" required>
-                    <label>Password</label>x
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox" name="txtconditions" id=""> i agree to the terms & conditions</label>
-                </div>
-                <button type="submit" class="btn">Register</button>
-                <div class="login-register">
-                    <p>Don't have an account? <a href="#" class="login-link">login</a></p>
-                </div>
-                
             </form>
         </div>
         </div>
@@ -69,7 +72,6 @@
         const registerLink = document.querySelector('.register-link');
         const btnPopup = document.querySelector('.btnLogin-popup');
         const iconClose = document.querySelector('.icon-close');
-
 
         registerLink.addEventListener('click', () => {
         wrapper.classList.add('active');

@@ -7,45 +7,84 @@ class controladorpublico
 
     public function inicio()
     {        
-        $vista = "Vistas/Inicio/frmcontenidopublico.php";
+        $vista = "Vistas/publica/frmcontenidopublico.php";
         include_once("Vistas/frmpublica.php");
     }    
+
+    public function iniciarsesion(){
+        $vista = "Vistas/Usuario/login.php";
+        include_once("Vistas/frmpublica.php");
+    }
 
     public function login()
     {
         $acceso = new clslogin();
         if (!empty($_POST))
         {
-            $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : NULL;
-            $password = isset($_POST['txtPassword']) ? $_POST['txtPassword'] : NULL;
+            $email = isset($_POST['txtEmailI']) ? $_POST['txtEmailI'] : NULL;
+            $password = isset($_POST['txtPasswordI']) ? $_POST['txtPasswordI'] : NULL;
             $result = $acceso->ConsultaUsuario($email, $password);
             $datos = $acceso->ConsultarDatos($email);
 
+            $tipoUsuario = $datos['TipoUsuario'];
+            $resultado =  $result['respuesta'];
 
-            // echo '<pre>';
-            // print_r($result);
-            // echo '</pre>';
+            // Comprobamos el tipo de usuario
+            if ($tipoUsuario == 'Cliente') {
+                if ($resultado == true)
+                {
+                    session_start();
+                    $_SESSION['id'] = $datos['idUsuario'];
+                    $_SESSION['nombre'] = $datos['vchNombre'];
+                    $vista = "Vistas/cliente/frmcontenidocliente.php";
+                    include_once("Vistas/frmcliente.php");
+                }
+                else
+                {
+                    $vista = "Vistas/Usuario/login.php";
+                    include_once("Vistas/frmpublica.php");
+                }
+            } elseif ($tipoUsuario == 'Administrador') {
+                if ($resultado == true)
+                {
+                    session_start();
+                    $_SESSION['id'] = $datos['idUsuario'];
+                    $_SESSION['nombre'] = $datos['vchNombre'];
+                    $vista = "Vistas/Administrador/frmaltas.php";
+                    include_once("Vistas/frmadministrador.php");
+                }
+                else
+                {
+                    $vista = "Vistas/Usuario/login.php";
+                    include_once("Vistas/frmpublica.php");
+                }
+            }
+        } else {
+            $vista = "Vistas/Usuario/login.php";
+            include_once("Vistas/frmpublica.php");
+        }
+    }
 
-            // if ($result == true) {
-            // // Depurar el contenido de $result
-            // echo '<pre>';
-            // print_r('el resultado fue 1');
-            // echo '</pre>';
-            // }else{
-            // // Depurar el contenido de $result
-            // echo '<pre>';
-            // print_r('El resultado fue 0');
-            // echo '</pre>';
-            // }
+    public function register() {
+        $acceso = new clslogin();
+        if (!empty($_POST)) {
+            $nombre = isset($_POST['txtNombre']) ? $_POST['txtNombre'] : NULL;
+            $apellido = isset($_POST['txtApellido']) ? $_POST['txtApellido'] : NULL;
+            $telefono = isset($_POST['txtTelefono']) ? $_POST['txtTelefono'] : NULL;
+            $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : NULL;
+            $password = isset($_POST['txtPassword']) ? $_POST['txtPassword'] : NULL;
+            $registro = $acceso->RegistrarUsuario($nombre, $apellido, $telefono, $email, $password);
+            $result = $acceso->ConsultaUsuario($email, $password);
+            $datos = $acceso->ConsultarDatos($email);
 
+            $resultado =  $result['respuesta'];
 
-
-            if ($result == true)
+            if ($resultado == true)
             {
                 session_start();
                 $_SESSION['id'] = $datos['idUsuario'];
-                $_SESSION['nombre'] = $datos['vchUsuario'];
-                $vista = "Vistas/Inicio/frmcontenidocliente.php";
+                $_SESSION['nombre'] = $datos['vchNombre'];
+                $vista = "Vistas/cliente/frmcontenidocliente.php";
                 include_once("Vistas/frmcliente.php");
             }
             else
@@ -53,21 +92,15 @@ class controladorpublico
                 $vista = "Vistas/Usuario/login.php";
                 include_once("Vistas/frmpublica.php");
             }
-        }
-        else
-        {
+        } else {
             $vista = "Vistas/Usuario/login.php";
             include_once("Vistas/frmpublica.php");
         }
     }
+
     public function menu()
 	{	
 		$vista="Vistas/Publica/frmmenu.php";
-        include_once("Vistas/frmpublica.php");
-    }
-    public function reservas()
-	{	
-		$vista="Vistas/Cliente/frmreserva.php";
         include_once("Vistas/frmpublica.php");
     }
 }
