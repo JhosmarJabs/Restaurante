@@ -18,7 +18,7 @@ class clslogin extends clsconexion{
     // clase registros
 
     public function RegistrarUsuario($nombre, $apellidos, $noTelefono, $email, $password) {
-        $sql = "CALL spInsertarCliente('$nombre', '$apellidos', '$noTelefono', '$email', '$password', 'Cliente');";
+        $sql = "CALL spInsertarUsuarios('$nombre', '$apellidos', '$noTelefono', '$email', '$password', 'Cliente');";
         $result = $this->conectar->query($sql);
     }
 }

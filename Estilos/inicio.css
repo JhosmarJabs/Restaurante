@@ -103,7 +103,7 @@
   scroll-snap-align: start;
   height: 400px;
   list-style: none;
-  background: #73ff00;/*Modificar colores*/
+  background: #ff00aa;/*Modificar colores*/
   cursor: pointer;
   padding-bottom: 5px;
   flex-direction: column;
