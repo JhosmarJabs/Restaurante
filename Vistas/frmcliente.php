@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="Estilos/navbar.css">
     <link rel="stylesheet" href="Estilos/footer.css">
     <link rel="stylesheet" href="Estilos/inicio.css">
-    <!-- <link rel="stylesheet" href="Estilos/menu.css"> Dar clases unicas-->
+    <link rel="stylesheet" href="Estilos/menu.css">
     <link rel="stylesheet" href="Estilos/reservas.css">
 
     <title>Huejutla Sabores</title>
@@ -25,12 +25,12 @@
     <header>
         <div class="navbar">
             <div class="logo"><a class="amarillo" href="#">Huejutla Sabores</a></div>
-            <a class="amarillo"><?php echo 'Bienvenido '.$_SESSION['nombre'] ?></a>
+            <a class="amarillo"><?php echo 'Bienvenido '.$_SESSION['nombre'].' Cliente' ?></a>
             <ul class="links">
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Inicio</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=menu">Menu</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=reservas">Reserva</a></li>
-                <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Contactanos</a></li>
             </ul>
             <a href="/restaurante/index?clase=controladorcliente&metodo=cerrar" class="action_btn">Cerrar Sesion</a>
             <div class="toggle_btn">
@@ -40,8 +40,8 @@
         <div class="dropdown_menu">
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Inicio</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=menu">Menu</a></li>
-            <li class="link-navbar"><a class="amarillo" href="#services">Reserva</a></li>
-            <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=reservas">Reserva</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Contactanos</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=cerrar" class="action_btn">Cerrar Sesion</a></li>
         </div>
     </header>

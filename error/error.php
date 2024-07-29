@@ -1,1 +1,0 @@
-<h2>Error al cargar la pagina XD</h2>

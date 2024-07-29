@@ -1,7 +1,7 @@
 /* Estilos para el el menu */
 .nm-principal {
     padding: 1.5rem;
-    background-color: #fffa;
+    background-color: #00f0ff;/*Modificar colores*/
 }
 
 .nm-primario {
@@ -55,7 +55,7 @@
     right: -22px;
 }
 .nm-catalogo .nm-grid{
-    background: #9e870310;
+    background: #ff00d4;/*Modificar colores*/
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% / 3) - 12px);
@@ -65,7 +65,7 @@
     border-radius: 8px;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    height: 420px;
+    height: 425px;
 }
 
 .nm-grid::-webkit-scrollbar {
@@ -103,7 +103,7 @@
     scroll-snap-align: start;
     height: 400px;
     list-style: none;
-    background: #fff;
+    background: #88ff00;/*Modificar colores*/
     cursor: pointer;
     padding-bottom: 5px;
     flex-direction: column;

@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="Estilos/navbar.css">
     <link rel="stylesheet" href="Estilos/footer.css">
     <link rel="stylesheet" href="Estilos/inicio.css">
-    <!-- <link rel="stylesheet" href="Estilos/menu.css"> -->
+    <link rel="stylesheet" href="Estilos/menu.css"> 
     <link rel="stylesheet" href="Estilos/login.css">
-    <!-- <link rel="stylesheet" href="Estilos/reservas.css"> -->
+    <link rel="stylesheet" href="Estilos/reservas.css">
     <title>Huejutla Sabores</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Inicio</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=menu">Menu</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion">Reserva</a></li>
-                <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Contactanos</a></li>
             </ul>
             <a href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion" class="action_btn">Iniciar Sesion</a>
             <div class="toggle_btn">
@@ -34,7 +34,7 @@
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Inicio</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=menu">Menu</a></li>
             <li class="link-navbar"><a class="amarillo" href="restaurante/index?clase=controladorpublico&metodo=iniciarsesion">Reserva</a></li>
-            <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=inicio">Contactanos</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorpublico&metodo=iniciarsesion" class="action_btn">Iniciar Sesion</a></li>
         </div>
     </header>

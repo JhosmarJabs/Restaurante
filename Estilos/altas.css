@@ -88,6 +88,31 @@
   border-bottom: 1px solid #ddd;
 }
 
+.tabla td input {
+    text-align: center;
+    border-radius: 7px;
+    border: 1px solid #111;
+    padding: 6px;
+}
+
+.tabla button{
+  text-align: center;
+  border-radius: 7px;
+  border: 1px solid #111;
+  padding: 6px;
+  color: #fff;
+}
+
+.actualizar{
+  background-color: #1f0;
+}
+.eliminar{
+  background-color: #f00;
+}
+.recuperar{
+  background-color: #f90;
+}
+
 .etiqueta {
   display: inline-block;
   padding: 0.25rem 0.5rem;

@@ -11,9 +11,9 @@ class clslogin extends clsconexion{
 	}
 
     public function ConsultarDatos($email) {
-        $result2=$this->conectar->query("CALL spConsultarDatos('$email')");
-        $resp2=$result2->fetch_assoc();
-        return $resp2;
+        $result=$this->conectar->query("CALL spConsultarDatos('$email')");
+        $resp=$result->fetch_assoc();
+        return $resp;
     }
     // clase registros
 

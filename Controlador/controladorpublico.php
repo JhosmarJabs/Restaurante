@@ -1,18 +1,25 @@
 <?php
 include_once 'Modelo/clslogin.php';
+include_once 'Modelo/clsregistros.php';
 
 class controladorpublico
 {
     private $vista;
 
     public function inicio()
-    {        
+    {
+        $registroZonas = new clsregistros();
+        $zonas = $registroZonas->ConsultaZona();    
+
+        $registroMesas = new clsregistros();
+        $mesas = $registroMesas->ConsultaMesas();   
+            
         $vista = "Vistas/publica/frmcontenidopublico.php";
         include_once("Vistas/frmpublica.php");
     }    
 
     public function iniciarsesion(){
-        $vista = "Vistas/Usuario/login.php";
+        $vista = "Vistas/Publica/frmlogin.php";
         include_once("Vistas/frmpublica.php");
     }
 
@@ -25,45 +32,54 @@ class controladorpublico
             $password = isset($_POST['txtPasswordI']) ? $_POST['txtPasswordI'] : NULL;
             $result = $acceso->ConsultaUsuario($email, $password);
             $datos = $acceso->ConsultarDatos($email);
-
-            $tipoUsuario = $datos['TipoUsuario'];
-            $resultado =  $result['respuesta'];
-
-            // Comprobamos el tipo de usuario
-            if ($tipoUsuario == 'Cliente') {
-                if ($resultado == true)
-                {
-                    session_start();
-                    $_SESSION['id'] = $datos['idUsuario'];
-                    $_SESSION['nombre'] = $datos['vchNombre'];
-                    $vista = "Vistas/cliente/frmcontenidocliente.php";
-                    include_once("Vistas/frmcliente.php");
-                }
-                else
-                {
-                    $vista = "Vistas/Usuario/login.php";
+    
+            if ($result !== null && $datos !== null) {
+                $resultado = $result['respuesta'];
+                $tipoUsuario = $datos['TipoUsuario'];
+    
+                // Comprobamos el tipo de usuario
+                if ($tipoUsuario == 'Cliente') {
+                    if ($resultado == true)
+                    {
+                        session_start();
+                        $_SESSION['id'] = $datos['idUsuario'];
+                        $_SESSION['nombre'] = $datos['vchNombre'];
+                        $vista = "Vistas/Cliente/frmcontenidocliente.php";
+                        include_once("Vistas/frmcliente.php");
+                    }
+                    else
+                    {
+                        $vista = "Vistas/Publica/frmlogin.php";
+                        include_once("Vistas/frmpublica.php");
+                    }
+                } elseif ($tipoUsuario == 'Administrador') {
+                    if ($resultado == true)
+                    {
+                        session_start();
+                        $_SESSION['id'] = $datos['idUsuario'];
+                        $_SESSION['nombre'] = $datos['vchNombre'];
+                        $vista = "Vistas/Administrador/frmaltas.php";
+                        include_once("Vistas/frmadministrador.php");
+                    }
+                    else
+                    {
+                        $vista = "Vistas/Publica/frmlogin.php";
+                        include_once("Vistas/frmpublica.php");
+                    }
+                } else {
+                    $vista = "Vistas/Publica/frmlogin.php";
                     include_once("Vistas/frmpublica.php");
                 }
-            } elseif ($tipoUsuario == 'Administrador') {
-                if ($resultado == true)
-                {
-                    session_start();
-                    $_SESSION['id'] = $datos['idUsuario'];
-                    $_SESSION['nombre'] = $datos['vchNombre'];
-                    $vista = "Vistas/Administrador/frmaltas.php";
-                    include_once("Vistas/frmadministrador.php");
-                }
-                else
-                {
-                    $vista = "Vistas/Usuario/login.php";
-                    include_once("Vistas/frmpublica.php");
-                }
+            } else {
+                $vista = "Vistas/Publica/frmlogin.php";
+                include_once("Vistas/frmpublica.php");
             }
         } else {
-            $vista = "Vistas/Usuario/login.php";
+            $vista = "Vistas/Publica/frmlogin.php";
             include_once("Vistas/frmpublica.php");
         }
     }
+    
 
     public function register() {
         $acceso = new clslogin();
@@ -89,17 +105,23 @@ class controladorpublico
             }
             else
             {
-                $vista = "Vistas/Usuario/login.php";
+                $vista = "Vistas/Publica/frmlogin.php";
                 include_once("Vistas/frmpublica.php");
             }
         } else {
-            $vista = "Vistas/Usuario/login.php";
+            $vista = "Vistas/Publica/frmlogin.php";
             include_once("Vistas/frmpublica.php");
         }
     }
 
     public function menu()
 	{	
+        $registroComida = new clsregistros();
+        $Comidas = $registroComida->ConsultaComidas(); 
+        $registroBebidas = new clsregistros();
+        $Bebidas = $registroBebidas->ConsultaBebidas(); 
+        $registroPostres = new clsregistros();
+        $Postres = $registroPostres->ConsultaPostres(); 
 		$vista="Vistas/Publica/frmmenu.php";
         include_once("Vistas/frmpublica.php");
     }

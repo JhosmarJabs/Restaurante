@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include_once 'Modelo/clsregistros.php';
 
 class controladorcliente
 {
@@ -8,7 +8,9 @@ class controladorcliente
 	
 	public function inicio()
 	{		
-		$vista="Vistas/cliente/frmcontenidocliente.php";
+		$registroZonas = new clsregistros();
+        $zonas = $registroZonas->ConsultaZona();   
+		$vista="Vistas/Publica/frmcontenidopublico.php";
         include_once("Vistas/frmCliente.php");
 	}
 
