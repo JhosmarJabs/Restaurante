@@ -8,7 +8,7 @@
             <form action="/restaurante/index?clase=controladorpublico&metodo=login" method="POST">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" name="txtEmailI" id="" required>
+                    <input type="email" name="txtEmailI" id="" class="patron-correo requerido">
                     <label>Correo</label>
                 </div>
                 <div class="input-box">
