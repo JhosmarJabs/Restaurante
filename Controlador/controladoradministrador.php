@@ -34,12 +34,12 @@ class controladoradministrador
         } else {
             // Datos de entrada
             $nombre = isset($_POST['txtnombre']) ? $_POST['txtnombre'] : NULL;
-            $apellido = isset($_POST['txtapellidos']) ? $_POST['txtapellidos'] : NULL;
+            $apellidos = isset($_POST['txtapellidos']) ? $_POST['txtapellidos'] : NULL;
             $telefono = isset($_POST['txttelefono']) ? $_POST['txttelefono'] : NULL;
             $email = isset($_POST['txtcorreo']) ? $_POST['txtcorreo'] : NULL;
             $password = isset($_POST['txtclave']) ? $_POST['txtclave'] : NULL;
             // Registro
-            $altaEmpleadoExitoso = $registroEmpleados->AltaEmpleado($nombre, $apellido, $telefono, $email, $password);
+            $altaEmpleadoExitoso = $registroEmpleados->AltaEmpleado($nombre, $apellidos, $noTelefono, $email, $password);
             // Actualizacion
             if ($altaEmpleadoExitoso) {
                 $Empleados = $registroEmpleados->ConsultaEmpleados();
@@ -233,8 +233,11 @@ class controladoradministrador
     public function EliminaActualizaEmpleado() {
         $registro = new clsregistros();
         if (isset($_POST['btnEliminar'])) {
+
             $id = $_POST['txtIdCliente'];
+
             $registro->EliminarCliente($id);
+
             $Consulta = $registro->ConsultaEmpleados();
             $vista = "Vistas/Catalogos/frmClientes.php";
             include_once("Vistas/frmplantillaprivada.php");
