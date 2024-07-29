@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const patrones = {
-        nombre: /^[A-Za-z\s]{2,50}$/,
+        nombre: /^[A-Za-z\s]{2,22}$/,
         correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         telefono: /^\d{12}$/,
         precio: /^\d+(\.\d{1,2})?$/

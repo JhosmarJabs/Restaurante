@@ -13,7 +13,7 @@
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="bag-outline"></ion-icon></span>
-                    <input type="password" name="txtPasswordI" id="" required>
+                    <input type="password" name="txtPasswordI" id="" required >
                     <label>Contraseña</label>
                 </div>
                 <div class="remember-forgot">
