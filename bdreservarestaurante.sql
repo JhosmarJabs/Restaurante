@@ -1,6 +1,6 @@
 /*
 SQLyog Professional v13.1.1 (64 bit)
-MySQL - 10.4.27-MariaDB : Database - bdreservarestaurante
+MySQL - 10.4.32-MariaDB : Database - bdreservarestaurante
 *********************************************************************
 */
 
@@ -36,6 +36,25 @@ CREATE TABLE `tblagenda` (
 
 insert  into `tblagenda`(`IdAgenda`,`Fecha`,`HoraInicio`,`HoraFinal`,`Mesa`,`IdReserva`) values 
 (1,'2024-07-22','15:00:00','17:00:00',4,1);
+
+/*Table structure for table `tblbebida` */
+
+DROP TABLE IF EXISTS `tblbebida`;
+
+CREATE TABLE `tblbebida` (
+  `idBebida` int(11) NOT NULL AUTO_INCREMENT,
+  `vchNombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idBebida`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tblbebida` */
+
+insert  into `tblbebida`(`idBebida`,`vchNombre`) values 
+(1,'Coca Cola'),
+(2,'Pepsi'),
+(3,'Agua Mineral'),
+(4,'Jugo de Naranja'),
+(5,'Cerveza');
 
 /*Table structure for table `tblbebidas` */
 
@@ -79,6 +98,25 @@ insert  into `tblcliente`(`IdCliente`,`vchNombre`,`vchApellidos`,`Telefono`,`Cor
 (2,'Palacios','Hernandez','+5217715563522','20230082@uthh.edu.mx'),
 (3,'Hernandez','Meza','+5217712170532','20230106@uthh.edu.mx'),
 (4,'Torres','Badillo','+5217712174809','20230098@uthh.edu.mx');
+
+/*Table structure for table `tblcomida` */
+
+DROP TABLE IF EXISTS `tblcomida`;
+
+CREATE TABLE `tblcomida` (
+  `idComida` int(11) NOT NULL AUTO_INCREMENT,
+  `vchNombre` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idComida`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tblcomida` */
+
+insert  into `tblcomida`(`idComida`,`vchNombre`) values 
+(1,'Pizza'),
+(2,'Hamburguesa'),
+(3,'Ensalada'),
+(4,'Pasta'),
+(5,'Tacos');
 
 /*Table structure for table `tblcomidas` */
 
@@ -748,6 +786,22 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spCrearZona` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spCrearZona` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spCrearZona`(
+    IN Ubi VARCHAR(100),
+    IN Imagen VARCHAR(100)
+)
+BEGIN
+    INSERT INTO tblzona (Ubicacion, vchImagen)
+    VALUES (Ubi, Imagen);
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spEliminarBebida` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spEliminarBebida` */;
@@ -860,6 +914,25 @@ BEGIN
     INSERT INTO tblBebidas (vchNombre, fltPrecio, vchImagen)
     VALUES (Nombre, Precio, Imagen);
 
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spInsertarCliente` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spInsertarCliente` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarCliente`(
+    IN ClNombre VARCHAR(50),
+    IN APaterno VARCHAR(50),
+    IN AMaterno VARCHAR(50),
+    IN NumTelefono VARCHAR(15),
+    IN Email VARCHAR(100)
+)
+BEGIN
+    INSERT INTO tblcliente (Nombre, ApellidoPaterno, ApellidoMaterno, Telefono, CorreoElectronico)
+    VALUES (ClNombre, APaterno, AMaterno, NumTelefono, Email);
 END */$$
 DELIMITER ;
 
@@ -1005,6 +1078,26 @@ BEGIN
 	END IF;
 END */$$
 DELIMITER ;
+
+/*Table structure for table `vwmenuxcomidaxbebida` */
+
+DROP TABLE IF EXISTS `vwmenuxcomidaxbebida`;
+
+/*!50001 DROP VIEW IF EXISTS `vwmenuxcomidaxbebida` */;
+/*!50001 DROP TABLE IF EXISTS `vwmenuxcomidaxbebida` */;
+
+/*!50001 CREATE TABLE  `vwmenuxcomidaxbebida`(
+ `idMenu` int(11) ,
+ `idConsumible` varchar(510) ,
+ `precio` decimal(10,2) 
+)*/;
+
+/*View structure for view vwmenuxcomidaxbebida */
+
+/*!50001 DROP TABLE IF EXISTS `vwmenuxcomidaxbebida` */;
+/*!50001 DROP VIEW IF EXISTS `vwmenuxcomidaxbebida` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`Josmar`@`%` SQL SECURITY DEFINER VIEW `vwmenuxcomidaxbebida` AS select `m`.`idMenu` AS `idMenu`,concat(ifnull(cast(`c`.`vchNombre` as char charset utf8),''),ifnull(cast(`b`.`vchNombre` as char charset utf8),'')) AS `idConsumible`,`m`.`precio` AS `precio` from ((`tblmenu` `m` left join `tblcomida` `c` on(`m`.`idComida` = `c`.`idComida`)) left join `tblbebida` `b` on(`m`.`idBebida` = `b`.`idBebida`)) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
