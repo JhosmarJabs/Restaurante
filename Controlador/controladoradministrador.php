@@ -1,5 +1,7 @@
 <?php
 include_once 'Modelo/clsregistros.php';
+include_once 'LibreriaFPDF/fpdf.php';
+include_once 'Modelo/clsreportes.php';
 
 session_start();
 
@@ -146,14 +148,8 @@ class controladoradministrador
                 $postres = null; // O manejar el error de alguna otra manera
             }
         }
-        echo '<pre>';
-        print_r($nombre);
-        print_r($descripcion);
-        print_r($costo);
-        print_r($imagen);
-        echo '</pre>';
-        // header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
-        // exit();
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function altacomida() {
         $registroComidas = new clsregistros();
@@ -272,13 +268,12 @@ class controladoradministrador
             $claveMesa = $_POST['txtClaveMesa'];
             $capacidad = $_POST['txtCapacidad'];
             $costo = $_POST['txtCosto'];
-            $idZona = $_POST['txtIdZona'];
-            $registro->ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona);
+            $registro->ActualizarMesa($id, $claveMesa, $capacidad, $costo); // Solo se pasan los cuatro parámetros disponibles
             $Consulta = $registro->ConsultaMesas();
         }
         header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
         exit();
-    }
+    }    
     public function EliminaActualizaPostre() {
         $registro = new clsregistros();
         if (isset($_POST['btnEliminar'])) {
@@ -330,6 +325,71 @@ class controladoradministrador
         header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
         exit();
     }                        
+
+    public function reportes()
+    {
+        $reporte=new clsReportes();//clase que esta en el modelo
+        if(!empty($_POST))
+        {
+            // Crear el objeto FPDF
+            $pdf = new FPDF();
+            
+            // Agregar una página
+            $pdf->AddPage();
+            // $pdf->Cell(190,30,$pdf->Image('./img/becas.png',130,12,60,30),0,1,'R');
+            // Establecer la fuente y el tamaño del título
+            $pdf->SetFont('Arial', 'B', 20);
+            
+            $pdf->Cell(0, 20,utf8_decode('Reporte de eliminaciones '), 0, 1, 'C');
+
+            // Consulta a la base de datos
+            $Consulta=$reporte->ConsultaBitacora();  
+            
+            //Centrar la tabla
+            $pdf->SetLeftMargin(10);
+            if ($Consulta->num_rows > 0) {
+                
+                // Establecer la fuente y el tamaño del encabezado de la tabla
+                $pdf->SetFont('Arial', 'B', 10);
+
+                // Imprimir los encabezados de la tabla
+                $pdf->Cell(20, 10, 'ID', 1, 0, 'C');
+                $pdf->Cell(30, 10, 'Tabla', 1, 0, 'C');
+                $pdf->Cell(40, 10, 'Infiormacion', 1, 0, 'C');
+                $pdf->Cell(40, 10, 'Tipo de acicon', 1, 0, 'C');
+                $pdf->Cell(20, 10, 'Fecha de accion', 1, 0, 'C');
+            
+                // Establecer la fuente y el tamaño del contenido de la tabla
+                $pdf->SetFont('Arial', '', 10);
+
+                // Imprimir los datos de la tabla
+                while ($row = $Consulta->fetch_assoc()) {
+                    $pdf->Cell(20, 10, $row["idBitacora"], 1, 0, 'L');
+                    $pdf->Cell(30, 10, $row["tabla"], 1, 0, 'L');
+                    $pdf->Cell(40, 10, $row["informacion_eliminada"], 1, 0, 'C');
+                    $pdf->Cell(40, 10, $row["tipo_accion"], 1, 0, 'C');
+                    $pdf->Cell(20, 10, $row["fecha_accion"], 1, 0, 'C');
+                }
+
+                // Salto de línea después de la tabla
+                $pdf->Ln(10);
+
+                $reporte->conectar->close();
+                // Mostrar el PDF
+                $pdf->Output();
+            } else {
+                echo "No se encontraron registros.";
+            }
+
+            //******************    
+            
+        }else
+        {
+            $vista="Vistas//.php";
+            include_once("Vistas/frmadministrador.php");
+        }
+
+    }
 
     public function cerrar()
 	{		

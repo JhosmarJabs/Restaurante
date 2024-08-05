@@ -24,19 +24,14 @@
                 <form action="/restaurante/index?clase=controladoradministrador&metodo=altaempleado" method="POST" class="formularioAltas">
                     <label for="nombre">Nombre:</label>
                     <input type="text" id="nombre" name="txtnombre" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
-        
                     <label for="apellidos">Apellidos:</label>
                     <input type="text" id="apellidos" name="txtapellidos" required pattern="^[a-zA-Z\s]+$" title="El apellido solo debe contener letras y espacios.">
-        
                     <label for="correo">Correo:</label>
                     <input type="email" id="correo" name="txtcorreo" required title="Por favor ingrese un correo válido.">
-        
                     <label for="telefono">Teléfono:</label>
                     <input type="tel" id="telefono" name="txttelefono" required pattern="^\d{10}$" title="El número de teléfono debe contener 10 dígitos.">
-        
                     <label for="clave">Clave:</label>
                     <input type="password" id="clave" name="txtclave" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una letra minúscula y un número.">
-        
                     <button type="submit">Guardar</button>
                 </form>
                 </div>
@@ -155,13 +150,11 @@
                 <div id="formulario-mesas" class="formulario-oculto">
                     <form action="/restaurante/index?clase=controladoradministrador&metodo=altamesa" method="POST" class="formularioAltas" enctype="multipart/form-data">
                         <label for="numero-mesa">Clave de Mesa:</label>
-                        <input type="text" id="numero-mesa" name="txtnumero-mesa" required pattern="^[a-zA-Z0-9\s]+$" title="La clave de mesa solo debe contener letras, números y espacios.">
-
+                        <input type="text" id="numero-mesa" name="txtClaveMesa" required pattern="^[a-zA-Z0-9\s]+$" title="La clave de mesa solo debe contener letras, números y espacios.">
                         <label for="capacidad-mesa">Capacidad:</label>
-                        <input type="number" id="capacidad-mesa" name="txtcapacidad-mesa" required min="1" title="Ingrese una capacidad válida.">
-
+                        <input type="number" id="capacidad-mesa" name="txtCapacidad" required min="1" title="Ingrese una capacidad válida.">
                         <label for="zona-mesa">Zona:</label>
-                        <select id="zona-mesa" name="txtzona-mesa" required>
+                        <select id="zona-mesa" name="txtZonaMesa" required>
                             <option value="" disabled selected>Selecciona una zona</option>
                             <?php
                             if (isset($zonasC) && $zonasC !== null) {
@@ -173,17 +166,15 @@
                             }
                             ?>
                         </select>
-
                         <label for="costo-mesa">Costo:</label>
-                        <input type="number" id="costo-mesa" name="txtcosto-mesa" required min="0" step="0.01" title="Ingrese un costo válido.">
+                        <input type="number" id="costo-mesa" name="txtCosto" required min="0" step="0.01" title="Ingrese un costo válido.">
                         
                         <label for="imagen-mesa">Imagen:</label>
-                        <input type="file" id="imagen-mesa" name="txtimagen-mesa" required accept="image/*" title="Seleccione un archivo de imagen válido.">
+                        <input type="file" id="imagen-mesa" name="txtImagenMesa" required accept="image/*" title="Seleccione un archivo de imagen válido.">
                         
                         <button type="submit">Guardar</button>
                     </form>
                 </div>
-
                 <div class="tarjeta">
                     <table class="tabla">
                         <thead>
@@ -240,16 +231,12 @@
                 <form action="/restaurante/index?clase=controladoradministrador&metodo=altapostre" method="POST" class="formularioAltas">
                     <label for="nombre-postre">Nombre:</label>
                     <input type="text" id="nombre-postre" name="txtnombre-postre" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
-        
                     <label for="descripcion-postre">Descripción:</label>
                     <input type="text" id="descripcion-postre" name="txtdescripcion-postre" required pattern="^[a-zA-Z0-9\s]+$" title="La descripción solo debe contener letras, números y espacios.">
-        
                     <label for="costo-postre">Costo:</label>
                     <input type="number" id="costo-postre" name="txtcosto-postre" required min="0" step="0.01" title="Ingrese un costo válido.">
-        
                     <label for="imagen-postre">Imagen:</label>
                     <input type="file" id="imagen-postre" name="txtimagen-postre" required accept="image/*" title="Seleccione un archivo de imagen válido.">
-        
                     <button type="submit">Guardar</button>
                 </form>
                 </div>
@@ -306,16 +293,12 @@
                 <form action="/restaurante/index?clase=controladoradministrador&metodo=altacomida" method="POST" class="formularioAltas">
                     <label for="nombre-comida">Nombre:</label>
                     <input type="text" id="nombre-comida" name="txtnombre-comida" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
-        
                     <label for="descripcion-comida">Descripción:</label>
                     <input type="text" id="descripcion-comida" name="txtdescripcion-comida" required pattern="^[a-zA-Z0-9\s]+$" title="La descripción solo debe contener letras, números y espacios.">
-        
                     <label for="costo-comida">Costo:</label>
                     <input type="number" id="costo-comida" name="txtcosto-comida" required min="0" step="0.01" title="Ingrese un costo válido.">
-        
                     <label for="imagen-comida">Imagen:</label>
                     <input type="file" id="imagen-comida" name="txtimagen-comida" required accept="image/*" title="Seleccione un archivo de imagen válido.">
-        
                     <button type="submit">Guardar</button>
                     </form>
                 </div>

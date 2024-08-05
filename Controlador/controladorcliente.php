@@ -14,7 +14,7 @@ class controladorcliente
         $registroMesas = new clsregistros();
         $mesas = $registroMesas->ConsultaMesas();   
 
-		$vista="Vistas/Publica/frmcontenidopublico.php";
+		$vista="Vistas/Cliente/frmcontenidocliente.php";
         include_once("Vistas/frmCliente.php");
 	}
 

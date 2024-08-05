@@ -14,8 +14,8 @@ class clsregistros extends clsconexion{
         $resultado = $this->conectar->query($sql);
         return $resultado ? true : false;
     }
-    public function AltaMesa($claveMesa, $capacidad, $zona, $costo, $imagen) {
-        $sql = "CALL spInsertarMesa('$claveMesa', $capacidad, $zona, $costo, '$imagen');";
+    public function AltaMesa($claveMesa, $capacidad,  $costo, $zona, $imagen) {
+        $sql = "CALL spInsertarMesa('$claveMesa', $capacidad, $costo, $zona, '$imagen');";
         $resultadoMesas = $this->conectar->query($sql);
         return $resultadoMesas ? true : false;
     }    
@@ -74,10 +74,10 @@ class clsregistros extends clsconexion{
         $sql = "CALL spActualizarZona($id, '$ubicacion');";
         $this->conectar->query($sql);
     }
-    public function ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona) {
-        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capacidad, $costo, $idZona);";
+    public function ActualizarMesa($id, $claveMesa, $capacidad, $costo) {
+        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capacidad, $costo);";
         $this->conectar->query($sql);
-    }
+    }   
     public function ActualizarPostre($id, $nombre, $descripcion, $precio) {
         $sql = "CALL spActualizarPostre($id, '$nombre', '$descripcion', $precio);";
         $this->conectar->query($sql);

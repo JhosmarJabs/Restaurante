@@ -18,7 +18,7 @@
                         if (isset($zonas) && $zonas !== null) {
                             while ($allzona = $zonas->fetch_object()) {
                                 echo '<li class="tarjeta">';
-                                echo '<img src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion . '" width="400" >';
+                                echo '<img class="imagen-tarjeta"src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion . '" >';
                                 echo '<h3 class="titulo-tarjeta">'.$allzona->vchUbicacion.'</h3>';
                                 echo '</li>';
                             }
@@ -37,7 +37,7 @@
                         if (isset($mesas) && $mesas !== null) {
                             while ($allMesas = $mesas->fetch_object()) {
                                 echo '<li class="tarjeta">';
-                                echo '<img src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '" width="400" >';
+                                echo '<img class="imagen-tarjeta"src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '" >';
                                 echo '<h3 class="titulo-tarjeta">'.$allMesas->ClaveMesa.'</h3>';
                                 echo '<p class="descripcion-tarjeta">'.$allMesas->Capasidad.'</p>';
                                 echo '<p class="precio-tarjeta">'.$allMesas->vchUbicacion.'</p>';
