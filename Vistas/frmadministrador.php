@@ -27,7 +27,7 @@
             <div class="logo"><a class="amarillo" href="#">Huejutla Sabores</a></div>
             <a class="amarillo"><?php echo 'Bienvenido '.$_SESSION['nombre'].' Administrador' ?></a>
             <ul class="links">
-                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=reportes">Repostes de eliminacion</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=reportes">Reportes de eliminacion</a></li>
                 <!-- <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=menu">Menu</a></li> -->
                 <!-- <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=altas">Altas</a></li> -->
                 <!-- <li class="link-navbar"><a class="amarillo" href="">Contactanos</a></li> -->
@@ -38,7 +38,7 @@
             </div>
         </div>
         <div class="dropdown_menu">
-            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=reportes">Repostes de eliminacion</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=reportes">Reportes de eliminacion</a></li>
             <!-- <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=menu">Menu</a></li> -->
             <!-- <li class="link-navbar"><a class="amarillo" href="#services">Reserva</a></li> -->
             <!-- <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladoradministrador&metodo=altas">Altas</a></li> -->

@@ -152,7 +152,7 @@
                         <label for="numero-mesa">Clave de Mesa:</label>
                         <input type="text" id="numero-mesa" name="txtClaveMesa" required pattern="^[a-zA-Z0-9\s]+$" title="La clave de mesa solo debe contener letras, números y espacios.">
                         <label for="capacidad-mesa">Capacidad:</label>
-                        <input type="number" id="capacidad-mesa" name="txtCapacidad" required min="1" title="Ingrese una capacidad válida.">
+                        <input type="number" id="capacidad-mesa" name="txtCapacidadMesa" required min="1" title="Ingrese una capacidad válida.">
                         <label for="zona-mesa">Zona:</label>
                         <select id="zona-mesa" name="txtZonaMesa" required>
                             <option value="" disabled selected>Selecciona una zona</option>
@@ -167,7 +167,7 @@
                             ?>
                         </select>
                         <label for="costo-mesa">Costo:</label>
-                        <input type="number" id="costo-mesa" name="txtCosto" required min="0" step="0.01" title="Ingrese un costo válido.">
+                        <input type="number" id="costo-mesa" name="txtCostoMesa" required min="0" step="0.01" title="Ingrese un costo válido.">
                         
                         <label for="imagen-mesa">Imagen:</label>
                         <input type="file" id="imagen-mesa" name="txtImagenMesa" required accept="image/*" title="Seleccione un archivo de imagen válido.">
@@ -195,7 +195,7 @@
                                 echo '<input type="hidden" name="txtIdMesa" value="' . $mesa->IdMesa . '">';
                                 echo '<tr>';
                                 echo '<td> <input type="text" name="txtClaveMesa" value="' . $mesa->ClaveMesa . '" readonly> </td>';
-                                echo '<td> <input type="text" name="txtCapacidad" value="' . $mesa->Capasidad . '" ></td>';
+                                echo '<td> <input type="text" name="txtCapasidad" value="' . $mesa->Capasidad . '" ></td>';
                                 echo '<td> <input type="text" name="txtZona" value="' . $mesa->vchUbicacion . '" ></td>';
                                 echo '<td> <input type="text" name="txtCosto" value="' . $mesa->costo . '" ></td>';
                                 echo '<td> <img src="img/Mesas/' . $mesa->vchImagen . '" alt="Imagen de la Mesa" width="150"> </td>';
@@ -228,17 +228,18 @@
                     </button>
                 </div>
                 <div id="formulario-postres" class="formulario-oculto">
-                <form action="/restaurante/index?clase=controladoradministrador&metodo=altapostre" method="POST" class="formularioAltas">
-                    <label for="nombre-postre">Nombre:</label>
-                    <input type="text" id="nombre-postre" name="txtnombre-postre" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
-                    <label for="descripcion-postre">Descripción:</label>
-                    <input type="text" id="descripcion-postre" name="txtdescripcion-postre" required pattern="^[a-zA-Z0-9\s]+$" title="La descripción solo debe contener letras, números y espacios.">
-                    <label for="costo-postre">Costo:</label>
-                    <input type="number" id="costo-postre" name="txtcosto-postre" required min="0" step="0.01" title="Ingrese un costo válido.">
-                    <label for="imagen-postre">Imagen:</label>
-                    <input type="file" id="imagen-postre" name="txtimagen-postre" required accept="image/*" title="Seleccione un archivo de imagen válido.">
-                    <button type="submit">Guardar</button>
-                </form>
+                <form action="/restaurante/index?clase=controladoradministrador&metodo=altapostre" method="POST" class="formularioAltas" enctype="multipart/form-data">
+                <label for="nombre-postre">Nombre:</label>
+                <input type="text" id="nombre-postre" name="txtnombre-postre" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
+                <label for="descripcion-postre">Descripción:</label>
+                <input type="text" id="descripcion-postre" name="txtdescripcion-postre" required pattern="^[a-zA-Z0-9\s]+$" title="La descripción solo debe contener letras, números y espacios.">
+                <label for="costo-postre">Costo:</label>
+                <input type="number" id="costo-postre" name="txtcosto-postre" required min="0" step="0.01" title="Ingrese un costo válido.">
+                <label for="imagen-postre">Imagen:</label>
+                <input type="file" id="imagen-postre" name="txtimagenpostre" required accept="image/*" title="Seleccione un archivo de imagen válido.">
+                <button type="submit">Guardar</button>
+            </form>
+
                 </div>
                 <div class="tarjeta">
                     <table class="tabla">
@@ -290,7 +291,7 @@
                     </button>
                 </div>
                 <div id="formulario-comidas" class="formulario-oculto">
-                <form action="/restaurante/index?clase=controladoradministrador&metodo=altacomida" method="POST" class="formularioAltas">
+                <form action="/restaurante/index?clase=controladoradministrador&metodo=altacomida" method="POST" class="formularioAltas" enctype="multipart/form-data">
                     <label for="nombre-comida">Nombre:</label>
                     <input type="text" id="nombre-comida" name="txtnombre-comida" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
                     <label for="descripcion-comida">Descripción:</label>
@@ -314,28 +315,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                        if (isset($comidas) && $comidas !== null) {
-                            while ($comida = $comidas->fetch_object()) {
-                                echo '<form class="form" action="/restaurante/index?clase=controladoradministrador&metodo=EliminaActualizaComida" method="POST">';
-                                echo '<input type="hidden" name="txtidComida" value="' . $comida->idComida . '">';
-                                echo '<tr>';
-                                echo '<td> <input type="text" name="txtNombreComida" value="' . $comida->vchNombre . '" readonly> </td>';
-                                echo '<td> <input type="text" name="txtDescripcionComida" value="' . $comida->vchDescripcion . '" ></td>';
-                                echo '<td> <input type="text" name="txtCostoComida" value="' . $comida->fltPrecio . '" ></td>';
-                                echo '<td> <img src="img/Comidas/' . $comida->vchImagen . '" alt="Imagen de la Comida" width="150"> </td>';
-                                echo '<td width=210>';
-                                echo '<button type="submit" class="eliminar" name="btnEliminar" value="btnEliminar" class="submit-button">Eliminar</button>';
-                                echo '&nbsp;';
-                                echo '<button type="submit" class="actualizar" name="btnActualizar" value="btnActualizar" class="submit-button">Actualizar</button>';
-                                echo '</td>';
-                                echo '</tr>';
-                                echo '</form>';
+                            <?php
+                            if (isset($comidas) && $comidas !== null) {
+                                while ($comida = $comidas->fetch_object()) {
+                                    echo '<form class="form" action="/restaurante/index?clase=controladoradministrador&metodo=EliminaActualizaComida" method="POST">';
+                                    echo '<input type="hidden" name="txtidComida" value="' . $comida->idComida . '">';
+                                    echo '<tr>';
+                                    echo '<td> <input type="text" name="txtNombreComida" value="' . $comida->vchNombre . '" readonly> </td>';
+                                    echo '<td> <input type="text" name="txtDescripcionComida" value="' . $comida->vchDescripcion . '" ></td>';
+                                    echo '<td> <input type="text" name="txtCostoComida" value="' . $comida->fltPrecio . '" ></td>';
+                                    echo '<td> <img src="img/Comidas/' . $comida->vchImagen . '" alt="Imagen de la Comida" width="150"> </td>';
+                                    echo '<td width=210>';
+                                    echo '<button type="submit" class="eliminar" name="btnEliminar" value="btnEliminar" class="submit-button">Eliminar</button>';
+                                    echo '&nbsp;';
+                                    echo '<button type="submit" class="actualizar" name="btnActualizar" value="btnActualizar" class="submit-button">Actualizar</button>';
+                                    echo '</td>';
+                                    echo '</tr>';
+                                    echo '</form>';
+                                }
+                            } else {
+                                echo 'No se encontraron comidas.';
                             }
-                        } else {
-                            echo 'No se encontraron comidas.';
-                        }
-                        ?>
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -352,7 +353,7 @@
                     </button>
                 </div>
                 <div id="formulario-bebidas" class="formulario-oculto">
-                <form action="/restaurante/index?clase=controladoradministrador&metodo=altabebida" method="POST" class="formularioAltas">
+                <form action="/restaurante/index?clase=controladoradministrador&metodo=altabebida" method="POST" class="formularioAltas" enctype="multipart/form-data">
                     <label for="nombre-bebida">Nombre:</label>
                     <input type="text" id="nombre-bebida" name="txtnombre-bebida" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
         

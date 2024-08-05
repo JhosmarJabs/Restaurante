@@ -9,16 +9,16 @@ class clsregistros extends clsconexion{
         $resultado = $this->conectar->query($sql);
         return $resultado ? true : false;
     }
-    public function AltaZona($Zona, $ZonaImg){
-        $sql = "Call spInsertarZona('$Zona','$ZonaImg');";
+    public function AltaZona($Zona, $ZonaImg) {
+        $sql = "CALL spInsertarZona('$Zona', '$ZonaImg');";
         $resultado = $this->conectar->query($sql);
         return $resultado ? true : false;
     }
-    public function AltaMesa($claveMesa, $capacidad,  $costo, $zona, $imagen) {
-        $sql = "CALL spInsertarMesa('$claveMesa', $capacidad, $costo, $zona, '$imagen');";
+    public function AltaMesa($claveMesa, $capacidad, $zona,$costo, $imagen) {
+        $sql = "CALL spInsertarMesa('$claveMesa', $capacidad, $zona, $costo, '$imagen');";
         $resultadoMesas = $this->conectar->query($sql);
         return $resultadoMesas ? true : false;
-    }    
+    }
     public function AltaPostre($nombre, $descripcion, $costo, $imagen) {
         $sql = "CALL spInsertarPostre('$nombre', '$descripcion', '$costo', '$imagen');";
         $resultadoPostres = $this->conectar->query($sql);
@@ -74,8 +74,8 @@ class clsregistros extends clsconexion{
         $sql = "CALL spActualizarZona($id, '$ubicacion');";
         $this->conectar->query($sql);
     }
-    public function ActualizarMesa($id, $claveMesa, $capacidad, $costo) {
-        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capacidad, $costo);";
+    public function ActualizarMesa($id, $claveMesa, $capasidad, $costo) {
+        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capasidad, $costo);";
         $this->conectar->query($sql);
     }   
     public function ActualizarPostre($id, $nombre, $descripcion, $precio) {
@@ -110,33 +110,10 @@ class clsregistros extends clsconexion{
     public function EliminarComida($id) {
         $sql = "CALL spEliminarComida($id);";
         $this->conectar->query($sql);
-    }
+    }    
     public function EliminarBebida($id) {
         $sql = "CALL spEliminarBebida($id);";
         $this->conectar->query($sql);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    public function plantilla(){
-        $sql1 = "Call sp();";
-        $resultado1 = $this->conectar->query($sql1);
-        if ($resultado1) {
-            return $resultado1;
-        } else {
-            return null;
-        }
-    }
-
-    
+    }   
 }
 ?>
