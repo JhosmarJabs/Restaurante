@@ -13,6 +13,8 @@ class controladoradministrador
         $Empleados = $registroEmpleados->ConsultaEmpleados();
         $registroZonas = new clsregistros();
         $zonas = $registroZonas->ConsultaZona();
+        $registroZonasC = new clsregistros();
+        $zonasC = $registroZonasC->ConsultaZona();
         $registroMesas = new clsregistros();
         $mesas = $registroMesas->ConsultaMesas();
         $registroPostres = new clsregistros();
@@ -29,13 +31,11 @@ class controladoradministrador
     public function altaempleado() {
         $registroEmpleados = new clsregistros();
         if (empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         } else {
             // Datos de entrada
             $nombre = isset($_POST['txtnombre']) ? $_POST['txtnombre'] : NULL;
             $apellidos = isset($_POST['txtapellidos']) ? $_POST['txtapellidos'] : NULL;
-            $telefono = isset($_POST['txttelefono']) ? $_POST['txttelefono'] : NULL;
+            $noTelefono = isset($_POST['txttelefono']) ? $_POST['txttelefono'] : NULL;
             $email = isset($_POST['txtcorreo']) ? $_POST['txtcorreo'] : NULL;
             $password = isset($_POST['txtclave']) ? $_POST['txtclave'] : NULL;
             // Registro
@@ -46,15 +46,13 @@ class controladoradministrador
             } else {
                 $Empleados = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function altaZona() {
         $registroZonas = new clsregistros();
         if(empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         } else {
             // Datos de entrada
             $Zona = isset($_POST['txtnombre-zona']) ? $_POST['txtnombre-zona'] : '' ;
@@ -72,22 +70,20 @@ class controladoradministrador
             } else {
                 $zona = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function altamesa() {
         $registroMesas = new clsregistros();
-        if (empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
-        } else {
+        if (!empty($_POST)) {
             // Datos de entrada
             $claveMesa = isset($_POST['txtnumero-mesa']) ? $_POST['txtnumero-mesa'] : NULL;
             $capacidad = isset($_POST['txtcapacidad-mesa']) ? $_POST['txtcapacidad-mesa'] : NULL;
             $zona = isset($_POST['txtzona-mesa']) ? $_POST['txtzona-mesa'] : NULL;
             $costo = isset($_POST['txtcosto-mesa']) ? $_POST['txtcosto-mesa'] : NULL;
             $imagen = isset($_FILES['txtimagen-mesa']) ? $_FILES['txtimagen-mesa'] : null;
+            
             // Verificar si se proporcionó una imagen
             if ($imagen && $imagen['error'] === UPLOAD_ERR_OK) {
                 // Manejo de la subida de la imagen
@@ -104,21 +100,21 @@ class controladoradministrador
             } else {
                 $altaMesaExitosa = false;
             }
+            
             // Actualización
             if ($altaMesaExitosa) {
                 $mesas = $registroMesas->ConsultaMesas();
             } else {
                 $mesas = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
+    
     public function altapostre() {
         $registroPostres = new clsregistros();
         if (empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         } else {
             // Datos de entrada
             $nombre = isset($_POST['txtnombre-postre']) ? $_POST['txtnombre-postre'] : NULL;
@@ -149,15 +145,19 @@ class controladoradministrador
             } else {
                 $postres = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        echo '<pre>';
+        print_r($nombre);
+        print_r($descripcion);
+        print_r($costo);
+        print_r($imagen);
+        echo '</pre>';
+        // header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        // exit();
     }
     public function altacomida() {
         $registroComidas = new clsregistros();
         if (empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         } else {
             // Datos de entrada
             $nombre = isset($_POST['txtnombre-comida']) ? $_POST['txtnombre-comida'] : NULL;
@@ -186,15 +186,13 @@ class controladoradministrador
             } else {
                 $comidas = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function altabebida() {
         $registroBebidas = new clsregistros();
         if (empty($_POST)) {
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         } else {
             // Datos de entrada
             $nombre = isset($_POST['txtnombre-bebida']) ? $_POST['txtnombre-bebida'] : NULL;
@@ -225,22 +223,16 @@ class controladoradministrador
             } else {
                 $bebidas = null; // O manejar el error de alguna otra manera
             }
-            $vista = "Vistas/Administrador/frmAltas.php";
-            include_once("Vistas/frmadministrador.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
-    
     public function EliminaActualizaEmpleado() {
         $registro = new clsregistros();
         if (isset($_POST['btnEliminar'])) {
-
-            $id = $_POST['txtIdCliente'];
-
-            $registro->EliminarCliente($id);
-
+            $id = $_POST['txtIdEmpleado'];
+            $registro->EliminarEmpleado($id);
             $Consulta = $registro->ConsultaEmpleados();
-            $vista = "Vistas/Catalogos/frmClientes.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
             $id = $_POST['txtIdEmpleado'];
             $nombre = $_POST['txtNombreC'];
@@ -248,11 +240,11 @@ class controladoradministrador
             $telefono = $_POST['txtTelC'];
             $email = $_POST['txtEmC'];
             // $clave = $_POST['txtClave'];
-            $registro->ActualizarCliente($id, $nombre, $apellidos, $telefono, $email);
+            $registro->ActualizarEmpleado($id, $nombre, $apellidos, $telefono, $email);
             $Consulta = $registro->ConsultaEmpleados();
-            $vista = "Vistas/Catalogos/frmClientes.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function EliminaActualizaZona() {
         $registro = new clsregistros();
@@ -260,17 +252,14 @@ class controladoradministrador
             $id = $_POST['txtIdZona'];
             $registro->EliminarZona($id);
             $Consulta = $registro->ConsultaZona();
-            $vista = "Vistas/Catalogos/frmZonas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
             $id = $_POST['txtIdZona'];
-            $ubicacion = $_POST['txtUbicacion'];
-            $imagen = $_POST['txtImagen'];
-            $registro->ActualizarZona($id, $ubicacion, $imagen);
+            $ubicacion = $_POST['txtNombreZona'];
+            $registro->ActualizarZona($id, $ubicacion);
             $Consulta = $registro->ConsultaZona();
-            $vista = "Vistas/Catalogos/frmZonas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function EliminaActualizaMesa() {
         $registro = new clsregistros();
@@ -278,20 +267,17 @@ class controladoradministrador
             $id = $_POST['txtIdMesa'];
             $registro->EliminarMesa($id);
             $Consulta = $registro->ConsultaMesas();
-            $vista = "Vistas/Catalogos/frmMesas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
             $id = $_POST['txtIdMesa'];
             $claveMesa = $_POST['txtClaveMesa'];
             $capacidad = $_POST['txtCapacidad'];
             $costo = $_POST['txtCosto'];
             $idZona = $_POST['txtIdZona'];
-            $imagen = $_POST['txtImagen'];
-            $registro->ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona, $imagen);
+            $registro->ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona);
             $Consulta = $registro->ConsultaMesas();
-            $vista = "Vistas/Catalogos/frmMesas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function EliminaActualizaPostre() {
         $registro = new clsregistros();
@@ -299,19 +285,16 @@ class controladoradministrador
             $id = $_POST['txtIdPostre'];
             $registro->EliminarPostre($id);
             $Consulta = $registro->ConsultaPostres();
-            $vista = "Vistas/Catalogos/frmPostres.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
             $id = $_POST['txtIdPostre'];
-            $nombre = $_POST['txtNombre'];
-            $descripcion = $_POST['txtDescripcion'];
-            $precio = $_POST['txtPrecio'];
-            $imagen = $_POST['txtImagen'];
-            $registro->ActualizarPostre($id, $nombre, $descripcion, $precio, $imagen);
+            $nombre = $_POST['txtNombrePostre'];
+            $descripcion = $_POST['txtDescripcionPostre'];
+            $precio = $_POST['txtCostoPostre'];
+            $registro->ActualizarPostre($id, $nombre, $descripcion, $precio);
             $Consulta = $registro->ConsultaPostres();
-            $vista = "Vistas/Catalogos/frmPostres.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function EliminaActualizaComida() {
         $registro = new clsregistros();
@@ -319,19 +302,16 @@ class controladoradministrador
             $id = $_POST['txtIdComida'];
             $registro->EliminarComida($id);
             $Consulta = $registro->ConsultaComidas();
-            $vista = "Vistas/Catalogos/frmComidas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
-            $id = $_POST['txtIdComida'];
-            $nombre = $_POST['txtNombre'];
-            $descripcion = $_POST['txtDescripcion'];
-            $precio = $_POST['txtPrecio'];
-            $imagen = $_POST['txtImagen'];
-            $registro->ActualizarComida($id, $nombre, $descripcion, $precio, $imagen);
+            $id = $_POST['txtidComida'];
+            $nombre = $_POST['txtNombreComida'];
+            $descripcion = $_POST['txtDescripcionComida'];
+            $precio = $_POST['txtCostoComida'];
+            $registro->ActualizarComida($id, $nombre, $descripcion, $precio);
             $Consulta = $registro->ConsultaComidas();
-            $vista = "Vistas/Catalogos/frmComidas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }
     public function EliminaActualizaBebida() {
         $registro = new clsregistros();
@@ -339,19 +319,16 @@ class controladoradministrador
             $id = $_POST['txtIdBebida'];
             $registro->EliminarBebida($id);
             $Consulta = $registro->ConsultaBebidas();
-            $vista = "Vistas/Catalogos/frmBebidas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         } else if (isset($_POST['btnActualizar'])) {
             $id = $_POST['txtIdBebida'];
-            $nombre = $_POST['txtNombre'];
-            $descripcion = $_POST['txtDescripcion'];
-            $precio = $_POST['txtPrecio'];
-            $imagen = $_POST['txtImagen'];
-            $registro->ActualizarBebida($id, $nombre, $descripcion, $precio, $imagen);
+            $nombre = $_POST['txtNombreBebida'];
+            $descripcion = $_POST['txtDescripcionBebida'];
+            $precio = $_POST['txtCostoBebida'];
+            $registro->ActualizarBebida($id, $nombre, $descripcion, $precio);
             $Consulta = $registro->ConsultaBebidas();
-            $vista = "Vistas/Catalogos/frmBebidas.php";
-            include_once("Vistas/frmplantillaprivada.php");
         }
+        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+        exit();
     }                        
 
     public function cerrar()

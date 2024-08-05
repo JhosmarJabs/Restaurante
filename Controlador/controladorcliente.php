@@ -8,8 +8,12 @@ class controladorcliente
 	
 	public function inicio()
 	{		
-		$registroZonas = new clsregistros();
-        $zonas = $registroZonas->ConsultaZona();   
+        $registroZonas = new clsregistros();
+        $zonas = $registroZonas->ConsultaZona();    
+
+        $registroMesas = new clsregistros();
+        $mesas = $registroMesas->ConsultaMesas();   
+
 		$vista="Vistas/Publica/frmcontenidopublico.php";
         include_once("Vistas/frmCliente.php");
 	}
@@ -20,8 +24,14 @@ class controladorcliente
 		header('location:index.php');
 	}
 
-	public function menu()
+    public function menu()
 	{	
+        $registroComida = new clsregistros();
+        $Comidas = $registroComida->ConsultaComidas(); 
+        $registroBebidas = new clsregistros();
+        $Bebidas = $registroBebidas->ConsultaBebidas(); 
+        $registroPostres = new clsregistros();
+        $Postres = $registroPostres->ConsultaPostres(); 
 		$vista="Vistas/Publica/frmmenu.php";
         include_once("Vistas/frmCliente.php");
     }

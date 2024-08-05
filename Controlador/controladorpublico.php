@@ -58,8 +58,8 @@ class controladorpublico
                         session_start();
                         $_SESSION['id'] = $datos['idUsuario'];
                         $_SESSION['nombre'] = $datos['vchNombre'];
-                        $vista = "Vistas/Administrador/frmaltas.php";
-                        include_once("Vistas/frmadministrador.php");
+                        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+                        exit();
                     }
                     else
                     {

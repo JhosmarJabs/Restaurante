@@ -18,7 +18,7 @@
                         if (isset($zonas) && $zonas !== null) {
                             while ($allzona = $zonas->fetch_object()) {
                                 echo '<li class="tarjeta">';
-                                echo '<img src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion . '" width="500" >';
+                                echo '<img src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion . '" width="400" >';
                                 echo '<h3 class="titulo-tarjeta">'.$allzona->vchUbicacion.'</h3>';
                                 echo '</li>';
                             }
@@ -37,7 +37,7 @@
                         if (isset($mesas) && $mesas !== null) {
                             while ($allMesas = $mesas->fetch_object()) {
                                 echo '<li class="tarjeta">';
-                                echo '<img src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '" width="500" >';
+                                echo '<img src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '" width="400" >';
                                 echo '<h3 class="titulo-tarjeta">'.$allMesas->ClaveMesa.'</h3>';
                                 echo '<p class="descripcion-tarjeta">'.$allMesas->Capasidad.'</p>';
                                 echo '<p class="precio-tarjeta">'.$allMesas->vchUbicacion.'</p>';
@@ -51,66 +51,11 @@
                 </ul>
                 <i class="fa-solid fa-angle-right" data-catalogo="mesas"></i>
             </div>
-            <h2 class="subtitulo-seccion">Nuestros top 5 platillos más solicitados</h2>
-            <div class="contenedor-catalogo" id="catalogo-top-platillos">
-                <i class="fa-solid fa-angle-left" data-catalogo="top-platillos"></i>
-                <ul class="rejilla" id="rejilla-top-platillos">
-                    <li class="tarjeta">
-                        <img src="images.png" alt="imgTmp" class="imagen-tarjeta">
-                        <h3 class="titulo-tarjeta">Ensalada César</h3>
-                        <p class="descripcion-tarjeta">Lechuga romana, pollo a la parrilla, crutones, queso parmesano y aderezo césar.</p>
-                        <p class="precio-tarjeta">$8.99</p>
-                    </li>
-                    <li class="tarjeta">
-                        <img src="pv.jpg" alt="imgTmp" class="imagen-tarjeta">
-                        <h3 class="titulo-tarjeta">Bruschetta</h3>
-                        <p class="descripcion-tarjeta">Pan tostado con tomates cherry, ajo, albahaca y aceite de oliva.</p>
-                        <p class="precio-tarjeta">$6.99</p>
-                    </li>
-                    <li class="tarjeta">
-                        <img src="pv.jpg" alt="imgTmp" class="imagen-tarjeta">
-                        <h3 class="titulo-tarjeta">Alitas de Pollo</h3>
-                        <p class="descripcion-tarjeta">Alitas de pollo fritas y bañadas en salsa búfalo.</p>
-                        <p class="precio-tarjeta">$9.99</p>
-                    </li>
-                </ul>
-                <i class="fa-solid fa-angle-right" data-catalogo="top-platillos"></i>
-            </div>
         </div>
     </main>
 </div>
 <div class="contenedor-principal">
     <div class="contenido-principal">
-        <section class="seccion-menu fondo-claro">
-            <div class="contenido-menu">
-                <div>
-                    <h2>Nuestro Menú</h2>
-                    <p>Explora nuestro menú lleno de platos deliciosos y creativos.</p>
-                    <a href="#" class="boton-ver-menu">Ver Menú</a>
-                </div>
-                <img src="background.jpg" alt="Plato del menú" class="imagen-menu" />
-            </div>
-        </section>
-        <section class="seccion-equipo fondo-claro2">
-            <div class="contenido-equipo">
-                <img src="background.jpg" alt="Equipo del restaurante" class="imagen-equipo" />
-                <div>
-                    <h2>Nuestro Equipo</h2>
-                    <p>Conoce a los talentosos chefs y meseros que hacen posible nuestra experiencia gastronómica.</p>
-                    <a href="#" class="boton-conocer-equipo">Conocer al Equipo</a>
-                </div>
-            </div>
-        </section>
-        <section class="seccion-eventos fondo-claro">
-            <div class="contenido-eventos">
-                <div>
-                    <h2>Opiniones</h2>
-                    <p>Califica nuestros servicios.</p>
-                    <a href="#" class="boton-ver-opiniones">Ver Opiniones</a>
-                </div>
-                <img src="background.jpg" alt="Evento especial" class="imagen-eventos" />
-            </div>
-        </section>
         <section class="seccion-visitanos fondo-claro2">
             <div class="contenido-visitanos">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232.582301138686!2d-98.4203074!3d21.1397865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d7276a63c27753%3A0x87e639fc00ffcaaa!2sFrikeys%20Terraza!5e0!3m2!1sen!2smx!4v1721768973803!5m2!1sen!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

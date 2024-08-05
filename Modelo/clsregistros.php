@@ -15,10 +15,10 @@ class clsregistros extends clsconexion{
         return $resultado ? true : false;
     }
     public function AltaMesa($claveMesa, $capacidad, $zona, $costo, $imagen) {
-        $sql = "CALL spInsertarMesa('$claveMesa', '$capacidad', '$zona', '$costo', '$imagen');";
+        $sql = "CALL spInsertarMesa('$claveMesa', $capacidad, $zona, $costo, '$imagen');";
         $resultadoMesas = $this->conectar->query($sql);
         return $resultadoMesas ? true : false;
-    }
+    }    
     public function AltaPostre($nombre, $descripcion, $costo, $imagen) {
         $sql = "CALL spInsertarPostre('$nombre', '$descripcion', '$costo', '$imagen');";
         $resultadoPostres = $this->conectar->query($sql);
@@ -66,33 +66,33 @@ class clsregistros extends clsconexion{
         return $resultadoBebidas ? $resultadoBebidas : null;
     }
 // Actualizar
-    public function ActualizarCliente($id, $nombre, $apellidos, $telefono, $email){
-        $sql = "CALL spActualizarCliente($id, '$nombre', '$apellidos', '$telefono', '$email');";
+    public function ActualizarEmpleado($id, $nombre, $apellidos, $telefono, $email){
+        $sql = "CALL spActualizarEmpleado($id, '$nombre', '$apellidos', '$telefono', '$email');";
         $this->conectar->query($sql);
     }
-    public function ActualizarZona($id, $ubicacion, $imagen) {
-        $sql = "CALL spActualizarZona($id, '$ubicacion', '$imagen');";
+    public function ActualizarZona($id, $ubicacion) {
+        $sql = "CALL spActualizarZona($id, '$ubicacion');";
         $this->conectar->query($sql);
     }
-    public function ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona, $imagen) {
-        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capacidad, $costo, $idZona, '$imagen');";
+    public function ActualizarMesa($id, $claveMesa, $capacidad, $costo, $idZona) {
+        $sql = "CALL spActualizarMesa($id, '$claveMesa', $capacidad, $costo, $idZona);";
         $this->conectar->query($sql);
     }
-    public function ActualizarPostre($id, $nombre, $descripcion, $precio, $imagen) {
-        $sql = "CALL spActualizarPostre($id, '$nombre', '$descripcion', $precio, '$imagen');";
+    public function ActualizarPostre($id, $nombre, $descripcion, $precio) {
+        $sql = "CALL spActualizarPostre($id, '$nombre', '$descripcion', $precio);";
         $this->conectar->query($sql);
     }
-    public function ActualizarComida($id, $nombre, $descripcion, $precio, $imagen) {
-        $sql = "CALL spActualizarComida($id, '$nombre', '$descripcion', $precio, '$imagen');";
+    public function ActualizarComida($id, $nombre, $descripcion, $precio) {
+        $sql = "CALL spActualizarComida($id, '$nombre', '$descripcion', $precio);";
         $this->conectar->query($sql);
     }
-    public function ActualizarBebida($id, $nombre, $descripcion, $precio, $imagen) {
-        $sql = "CALL spActualizarBebida($id, '$nombre', '$descripcion', $precio, '$imagen');";
+    public function ActualizarBebida($id, $nombre, $descripcion, $precio) {
+        $sql = "CALL spActualizarBebida($id, '$nombre', '$descripcion', $precio);";
         $this->conectar->query($sql);
     }
 // Eliminar
-    public function EliminarCliente($id) {
-        $sql = "CALL spEliminarCliente($id);";
+    public function EliminarEmpleado($id) {
+        $sql = "CALL spEliminarEmpleado($id);";
         $this->conectar->query($sql);
     }
     public function EliminarZona($id) {

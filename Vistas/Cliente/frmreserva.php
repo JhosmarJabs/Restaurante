@@ -70,7 +70,7 @@
                     }
                 </script>
             </form>
-            <div class="datos-reservas-reserva">
+            <!-- <div class="datos-reservas-reserva">
                 <h2 class="subtitulo-reserva">Reservaciones Realizadas</h2>
                 <div>
                     <table class="tabla-reserva">
@@ -88,7 +88,7 @@
                     </tr>
                     </table>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

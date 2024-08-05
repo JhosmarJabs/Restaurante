@@ -1,6 +1,6 @@
 /*
 SQLyog Professional v13.1.1 (64 bit)
-MySQL - 10.4.32-MariaDB : Database - bdreservarestaurante
+MySQL - 10.4.27-MariaDB : Database - bdreservarestaurante
 *********************************************************************
 */
 
@@ -37,25 +37,6 @@ CREATE TABLE `tblagenda` (
 insert  into `tblagenda`(`IdAgenda`,`Fecha`,`HoraInicio`,`HoraFinal`,`Mesa`,`IdReserva`) values 
 (1,'2024-07-22','15:00:00','17:00:00',4,1);
 
-/*Table structure for table `tblbebida` */
-
-DROP TABLE IF EXISTS `tblbebida`;
-
-CREATE TABLE `tblbebida` (
-  `idBebida` int(11) NOT NULL AUTO_INCREMENT,
-  `vchNombre` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idBebida`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `tblbebida` */
-
-insert  into `tblbebida`(`idBebida`,`vchNombre`) values 
-(1,'Coca Cola'),
-(2,'Pepsi'),
-(3,'Agua Mineral'),
-(4,'Jugo de Naranja'),
-(5,'Cerveza');
-
 /*Table structure for table `tblbebidas` */
 
 DROP TABLE IF EXISTS `tblbebidas`;
@@ -67,16 +48,19 @@ CREATE TABLE `tblbebidas` (
   `vchDescripcion` varchar(255) DEFAULT NULL,
   `vchImagen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idBebida`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblbebidas` */
 
 insert  into `tblbebidas`(`idBebida`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`vchImagen`) values 
-(1,'Coca Cola',NULL,NULL,NULL),
-(2,'Pepsi',NULL,NULL,NULL),
-(3,'Agua Mineral',NULL,NULL,NULL),
-(4,'Jugo de Naranja',NULL,NULL,NULL),
-(5,'Cerveza',NULL,NULL,NULL);
+(1,'Coca Cola',25.00,'Deliciosa coca cola fria, refresca tu paladar','cocacola.jpeg'),
+(2,'Pepsi',20.00,'Pepsi super fria, disfruta de nuestro sabor','pepsi.jpg'),
+(3,'Agua Mineral',15.00,'Refrescate y disfruta con Agua mineral','aguamineral.jpg'),
+(4,'Jugo de Naranja',27.00,'Jugo de naranja recien hecho, del arbol a tu paladar','jugodenaranja.jpg'),
+(5,'Cerveza',40.00,'Delicisa cerveza fria,especialidad a escoger','cerveza.webp'),
+(6,'Limonada',35.00,'Refrescante limonada recien hecha super fria','limonada.jpeg'),
+(7,'Piña Colada',70.00,'Deliciosa piña colada,con fruta natural,con y sin alcohol','piñacolada.jpg'),
+(9,'Mojito',67.00,'Refrescante mojito,tequila a escoger con rodajas de limon y hojas menta','mojito.jpg');
 
 /*Table structure for table `tblcliente` */
 
@@ -99,25 +83,6 @@ insert  into `tblcliente`(`IdCliente`,`vchNombre`,`vchApellidos`,`Telefono`,`Cor
 (3,'Hernandez','Meza','+5217712170532','20230106@uthh.edu.mx'),
 (4,'Torres','Badillo','+5217712174809','20230098@uthh.edu.mx');
 
-/*Table structure for table `tblcomida` */
-
-DROP TABLE IF EXISTS `tblcomida`;
-
-CREATE TABLE `tblcomida` (
-  `idComida` int(11) NOT NULL AUTO_INCREMENT,
-  `vchNombre` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `tblcomida` */
-
-insert  into `tblcomida`(`idComida`,`vchNombre`) values 
-(1,'Pizza'),
-(2,'Hamburguesa'),
-(3,'Ensalada'),
-(4,'Pasta'),
-(5,'Tacos');
-
 /*Table structure for table `tblcomidas` */
 
 DROP TABLE IF EXISTS `tblcomidas`;
@@ -129,16 +94,19 @@ CREATE TABLE `tblcomidas` (
   `vchDescripcion` varchar(200) DEFAULT NULL,
   `vchImagen` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblcomidas` */
 
 insert  into `tblcomidas`(`idComida`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`vchImagen`) values 
 (1,'Pizza',141.00,'Masa crujiente, salsa de tomate deliciosa y queso derretido que te hará sonreír.','PizzaMediana.jpeg'),
-(2,'Hamburguesa',NULL,NULL,NULL),
-(3,'Ensalada',NULL,NULL,NULL),
-(4,'Pasta',NULL,NULL,NULL),
-(5,'Tacos',NULL,NULL,NULL);
+(2,'Hamburguesa',90.00,'Pan,carne deliciosa,queso amarillo derretido,jamon,tomate´,aguacate y capsu a su gusto','Hamburguesa.jpg'),
+(3,'Ensalada',85.00,'Lechuga fresca,rodajas de fresa,fajitas de pollo,nuez,pepino y pan tostado','ensalada.jpeg'),
+(4,'Pasta',120.00,'Pasta recien hecha,salsa a escoger,queso mozarella y un toque de peregil','pasta.jpg'),
+(5,'Tacos',75.00,'Tortilla recien hecha, salsa a escoger, especialidades','tacos.webp'),
+(6,'pulpo en crema',350.00,'Delicioso pulpo a la braza en una crema de chipotle','pulpoencrema.jpg'),
+(7,'Sushi',350.00,'Distintas presentaciones de sushis a escoger','sushi.webp'),
+(8,'Corte',400.00,'Corte de carne a la braza, acompañada de esparragos y papas a la francesa','corte.webp');
 
 /*Table structure for table `tblmenu` */
 
@@ -189,26 +157,26 @@ CREATE TABLE `tblmesa` (
 /*Data for the table `tblmesa` */
 
 insert  into `tblmesa`(`IdMesa`,`ClaveMesa`,`Capasidad`,`Costo`,`IdZona`,`vchImagen`) values 
-(1,'T1',4,300.00,1,'img1.png'),
-(2,'T2',4,300.00,1,'mesal1.png'),
-(3,'T3',6,450.00,1,'mesa3.png'),
-(4,'T4',8,600.00,1,'mesa4.png'),
-(5,'T5',4,300.00,1,'mesa5.png'),
-(6,'TV1',4,300.00,2,'img1.png'),
-(7,'TV2',4,300.00,2,'mesal1.png'),
-(8,'TV3',6,450.00,2,'mesa3.png'),
-(9,'TV4',8,600.00,2,'mesa4.png'),
-(10,'TV5',4,300.00,2,'mesa5.png'),
-(11,'ZV1',4,300.00,3,'img1.png'),
-(12,'ZV2',4,300.00,3,'mesal1.png'),
-(13,'ZV3',6,450.00,3,'mesa3.png'),
-(14,'ZV4',8,600.00,3,'mesa4.png'),
-(15,'ZV5',4,300.00,3,'mesa5.png'),
-(16,'ZC1',4,300.00,4,'img1.png'),
-(17,'ZC2',4,300.00,4,'mesal1.png'),
-(18,'ZC3',6,450.00,4,'mesa3.png'),
-(19,'ZC4',8,600.00,4,'mesa4.png'),
-(20,'ZC5',4,300.00,4,'mesa5.png');
+(1,'T1',4,300.00,1,'mesa1.webp'),
+(2,'T2',4,300.00,1,'mesa2.jpg'),
+(3,'T3',6,450.00,1,'mesa3.jpg'),
+(4,'T4',8,600.00,1,'mesa4.jpg'),
+(5,'T5',4,300.00,1,'mesa5.jpg'),
+(6,'TV1',4,300.00,2,'mesa6.jpg'),
+(7,'TV2',4,300.00,2,'mesa7.jpg'),
+(8,'TV3',6,450.00,2,'mesa8.jpg'),
+(9,'TV4',8,600.00,2,'mesa9.jpg'),
+(10,'TV5',4,300.00,2,'mesa10.webp'),
+(11,'ZV1',4,300.00,3,'mesa11.webp'),
+(12,'ZV2',4,300.00,3,'mesa12.jpg'),
+(13,'ZV3',6,450.00,3,'mesa13.jpg'),
+(14,'ZV4',8,600.00,3,'mesa14.jpg'),
+(15,'ZV5',4,300.00,3,'mesa15.jpg'),
+(16,'ZC1',4,300.00,4,'mesa16.jpeg'),
+(17,'ZC2',4,300.00,4,'mesa17.jpg'),
+(18,'ZC3',6,450.00,4,'mesa8.jpg'),
+(19,'ZC4',8,600.00,4,'mesa3.jpg'),
+(20,'ZC5',4,300.00,4,'mesa6.jpg');
 
 /*Table structure for table `tblpago` */
 
@@ -241,9 +209,20 @@ CREATE TABLE `tblpostres` (
   `vchDescripcion` varchar(255) DEFAULT NULL,
   `vchImagen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idPostre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblpostres` */
+
+insert  into `tblpostres`(`idPostre`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`vchImagen`) values 
+(1,'Pastel chocolate',70.00,'Pan esponjoso,glaciado delicioso de chocolate y cerezas','pastelchocolate.jpg'),
+(2,'Brownie',50.00,'Pan esponjoso,cubierta de chocolate y bola de helado a escoger','brownie.jpg'),
+(3,'Carlota',60.00,'Delicioso pan suave con frutos rojos frescos.','carlota.jpg'),
+(4,'Crepa',65.00,'Deliciosa crepa recien hecha, con fruta de temporada,untable a escoger ','crepa.jpg'),
+(5,'Flan Napolitano',65.00,'Pan cremoso y suave, con un glasiado de fresa deliciosa','flannapolitano.jpg'),
+(7,'Helado',70.00,'DEliciosos Sabores a escoger,variedad de toppings ','helado.jpg'),
+(8,'Pastel de tres leches',75.00,'Pan esponjoso,cubierta de chantilly y trozos de nuez','pasteltresleches.webp'),
+(9,'Pastel de zanahoria',75.00,'Delicioso Pan esponjoso recien horneado con nueces','pastelzanahoria.jpg'),
+(10,'Torreja',72.00,'Pan suave,canela espolvoreada y bola de helado a escoger','torreja.jpg');
 
 /*Table structure for table `tblreserva` */
 
@@ -308,11 +287,9 @@ insert  into `tblusuarios`(`idUsuario`,`vchNombre`,`vchApellidos`,`vchNoTelefono
 (1,'Josmar',NULL,'7712194196','20230026@uthh.edu.mx','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
 (2,'Aldair',NULL,'4831290696','josmar050116@gmail.com','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
 (3,'Josmar Aldair','Bautista Saavedra','4831290696','josmar050110@gmail.com','c30d2d6dfe8c5ae3a3e9b9cef0d36f59','Administrador'),
-(14,'JABS','Meraz','','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado'),
-(17,'Diana','Palacios','','Diana@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','Empleado'),
-(25,'JABSALDAIR','SAAVEDRA','1234567890','JABSALDAIR@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado'),
-(26,'12345687901234567890','12345687901234567890','1234568790123','12345687901234567890123@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado'),
-(27,'12345687901234567890','12345687901234567890','1234568790123','12345687901234567890123@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado');
+(14,'JABS','Meraz','4431290696','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado'),
+(17,'Diana','Palacios','4431290698','Diana@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','Empleado'),
+(25,'JABSALDAIR','SAAVEDRA','1234567890','JABSALDAIR@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado');
 
 /*Table structure for table `tblzona` */
 
@@ -323,7 +300,7 @@ CREATE TABLE `tblzona` (
   `vchUbicacion` varchar(100) DEFAULT NULL,
   `vchImagen` varchar(100) NOT NULL,
   PRIMARY KEY (`IdZona`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblzona` */
 
@@ -410,16 +387,14 @@ DELIMITER $$
     IN pIdBebida INT,
     IN pNombre VARCHAR(255),
     IN pDescripcion TEXT,
-    IN pPrecio FLOAT,
-    IN pImagen VARCHAR(255)
+    IN pPrecio FLOAT
 )
 BEGIN
     UPDATE tblbebidas
     SET 
         vchNombre = pNombre,
-        vchDescripcion = pDescripcion,
         fltPrecio = pPrecio,
-        vchImagen = pImagen
+        vchDescripcion = pDescripcion
     WHERE 
         IdBebida = pIdBebida;
 END */$$
@@ -460,18 +435,41 @@ DELIMITER $$
     IN pIdComida INT,
     IN pNombre VARCHAR(20),
     IN pDescripcion TEXT,
-    IN pPrecio FLOAT,
-    IN pImagen VARCHAR(255)
+    IN pPrecio FLOAT
 )
 BEGIN
     UPDATE tblcomidas
     SET 
         vchNombre = pNombre,
         vchDescripcion = pDescripcion,
-        fltPrecio = pPrecio,
-        vchImagen = pImagen
+        fltPrecio = pPrecio
     WHERE 
         IdComida = pIdComida;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spActualizarEmpleado` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spActualizarEmpleado` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spActualizarEmpleado`(
+    IN pIdUsuario INT,
+    IN pNombre VARCHAR(255),
+    IN pApellidos VARCHAR(255),
+    IN pTelefono VARCHAR(20),
+    IN pEmail VARCHAR(255)
+)
+BEGIN
+    UPDATE tblusuarios
+    SET 
+        vchNombre = pNombre,
+        vchApellidos = pApellidos,
+        vchNoTelefono = pTelefono,
+        vchEmail = pEmail
+    WHERE 
+        idUsuario = pIdUsuario;
 END */$$
 DELIMITER ;
 
@@ -512,16 +510,14 @@ DELIMITER $$
     IN pIdPostre INT,
     IN pNombre VARCHAR(255),
     IN pDescripcion TEXT,
-    IN pPrecio FLOAT,
-    IN pImagen VARCHAR(255)
+    IN pPrecio FLOAT
 )
 BEGIN
     UPDATE tblpostres
     SET 
         vchNombre = pNombre,
         vchDescripcion = pDescripcion,
-        fltPrecio = pPrecio,
-        vchImagen = pImagen
+        fltPrecio = pPrecio
     WHERE 
         IdPostre = pIdPostre;
 END */$$
@@ -535,14 +531,12 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spActualizarZona`(
     IN pIdZona INT,
-    IN pUbicacion VARCHAR(255),
-    IN pImagen VARCHAR(255)
+    IN pUbicacion VARCHAR(255)
 )
 BEGIN
     UPDATE tblzona
     SET 
-        vchUbicacion = pUbicacion,
-        vchImagen = pImagen
+        vchUbicacion = pUbicacion
     WHERE 
         IdZona = pIdZona;
 END */$$
@@ -850,6 +844,22 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spEliminarEmpleado` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spEliminarEmpleado` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spEliminarEmpleado`(
+    IN pIdUsuario INT
+)
+BEGIN
+    DELETE FROM tblusuarios
+    WHERE 
+        idUsuario = pIdUsuario;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spEliminarMesa` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spEliminarMesa` */;
@@ -907,12 +917,13 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarBebida`(
     IN Nombre VARCHAR(50),
     IN Precio DECIMAL(10,2),
+        IN Descripcion TEXT,
     IN Imagen VARCHAR(255)
 )
 BEGIN
 
-    INSERT INTO tblBebidas (vchNombre, fltPrecio, vchImagen)
-    VALUES (Nombre, Precio, Imagen);
+    INSERT INTO tblBebidas (vchNombre,vchDescripcion, fltPrecio, vchImagen)
+    VALUES (Nombre, Descripcion, Precio, Imagen);
 
 END */$$
 DELIMITER ;
@@ -945,31 +956,33 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarComida`(
     IN Nombre VARCHAR(20),
     IN Precio DECIMAL(10,2),
+            IN Descripcion TEXT,
     IN Imagen VARCHAR(255)
 )
 BEGIN
 
-    INSERT INTO tblComidas (vchNombre, fltPrecio, vchImagen)
-    VALUES (Nombre, Precio, Imagen);
+    INSERT INTO tblComidas(vchNombre,vchDescripcion, fltPrecio, vchImagen)
+    VALUES (Nombre, Descripcion, Precio, Imagen);
 
 END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `spInsertarCrearMesa` */
+/* Procedure structure for procedure `spInsertarMesa` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `spInsertarCrearMesa` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `spInsertarMesa` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarCrearMesa`(
-    IN NumeroComensales INT,
-    IN Precio DECIMAL(10,2),
-    IN Zona INT,
-    IN Imag VARCHAR(100)
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarMesa`(
+    IN Clave VARCHAR(10),
+    IN capacidad INT,
+    IN zona INT,
+    IN costo DECIMAL(10,2),
+    IN imagen VARCHAR(100)
 )
 BEGIN
-    INSERT INTO tblmesa (NumeroDeComensales, Costo, IdZona, vchImagen)
-    VALUES (NumeroComensales, Precio, Zona, Imag);
+    INSERT INTO tblmesa (ClaveMesa, NumeroDeComensales, Costo, IdZona, vchImagen)
+    VALUES (Clave, capacidad, costo, zona, imagen);
 END */$$
 DELIMITER ;
 
@@ -1016,13 +1029,13 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarPostre`(
     IN Nombre VARCHAR(50),
     IN Precio DECIMAL(10,2),
+            IN Descripcion TEXT,
     IN Imagen VARCHAR(255)
 )
 BEGIN
 
-    INSERT INTO tblPostres (Nombre, fltPrecio, vchImagen)
-    VALUES (Nombre, Precio, Imagen);
-
+    INSERT INTO tblPostres (vchNombre,vchDescripcion, fltPrecio, vchImagen)
+    VALUES (Nombre, Descripcion, Precio, Imagen);
 END */$$
 DELIMITER ;
 
@@ -1078,26 +1091,6 @@ BEGIN
 	END IF;
 END */$$
 DELIMITER ;
-
-/*Table structure for table `vwmenuxcomidaxbebida` */
-
-DROP TABLE IF EXISTS `vwmenuxcomidaxbebida`;
-
-/*!50001 DROP VIEW IF EXISTS `vwmenuxcomidaxbebida` */;
-/*!50001 DROP TABLE IF EXISTS `vwmenuxcomidaxbebida` */;
-
-/*!50001 CREATE TABLE  `vwmenuxcomidaxbebida`(
- `idMenu` int(11) ,
- `idConsumible` varchar(510) ,
- `precio` decimal(10,2) 
-)*/;
-
-/*View structure for view vwmenuxcomidaxbebida */
-
-/*!50001 DROP TABLE IF EXISTS `vwmenuxcomidaxbebida` */;
-/*!50001 DROP VIEW IF EXISTS `vwmenuxcomidaxbebida` */;
-
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`Josmar`@`%` SQL SECURITY DEFINER VIEW `vwmenuxcomidaxbebida` AS select `m`.`idMenu` AS `idMenu`,concat(ifnull(cast(`c`.`vchNombre` as char charset utf8),''),ifnull(cast(`b`.`vchNombre` as char charset utf8),'')) AS `idConsumible`,`m`.`precio` AS `precio` from ((`tblmenu` `m` left join `tblcomida` `c` on(`m`.`idComida` = `c`.`idComida`)) left join `tblbebida` `b` on(`m`.`idBebida` = `b`.`idBebida`)) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
