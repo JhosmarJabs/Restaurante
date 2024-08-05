@@ -16,6 +16,52 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`bdreservarestaurante` /*!40100 DEFAULT 
 
 USE `bdreservarestaurante`;
 
+/*Table structure for table `bitacora_eliminaciones` */
+
+DROP TABLE IF EXISTS `bitacora_eliminaciones`;
+
+CREATE TABLE `bitacora_eliminaciones` (
+  `idBitacora` int(11) NOT NULL AUTO_INCREMENT,
+  `tabla` varchar(50) DEFAULT NULL,
+  `informacion_eliminada` varchar(255) DEFAULT NULL,
+  `tipo_accion` varchar(50) DEFAULT NULL,
+  `fecha_accion` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`idBitacora`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `bitacora_eliminaciones` */
+
+insert  into `bitacora_eliminaciones`(`idBitacora`,`tabla`,`informacion_eliminada`,`tipo_accion`,`fecha_accion`) values 
+(2,'tblzona','ID: 19, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-05 11:55:01'),
+(3,'tblzona','ID: 20, Ubicación: pruevas, Imagen: ZonaComun.webp','DELETE','2024-08-05 11:55:24'),
+(5,'tblUsuarios','ID:30, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 12:52:16'),
+(6,'tblpostres','ID: 11, Nombre: Pastel de Chocolate','DELETE','2024-08-05 12:56:32'),
+(7,'tblbebidas','ID: 10, Nombre: Limonada','DELETE','2024-08-05 12:56:35'),
+(8,'tblcomidas','ID: 9, Nombre: Tacos al Pastor','DELETE','2024-08-05 13:05:38'),
+(9,'tblbebidas','ID: 11, Nombre: Limonada','DELETE','2024-08-05 13:07:49'),
+(10,'tblcomidas','ID: 10, Nombre: Tacos al Pastor','DELETE','2024-08-05 13:07:57'),
+(11,'tblpostres','ID: 12, Nombre: Pastel de Chocolate','DELETE','2024-08-05 13:08:01'),
+(12,'tblzona','ID: 22, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 13:08:11'),
+(13,'tblzona','ID: 21, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 13:08:15'),
+(14,'tblUsuarios','ID:31, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 13:08:18'),
+(15,'tblmesa','ID: 33, Clave: M3, Capacidad: 4, Costo: 500.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-05 13:29:11'),
+(16,'tblmesa','ID: 36, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:19'),
+(17,'tblmesa','ID: 37, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:26'),
+(18,'tblmesa','ID: 38, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:31'),
+(19,'tblmesa','ID: 35, Clave: M1, Capacidad: 4, Costo: 50.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-05 14:13:37'),
+(20,'tblmesa','ID: 39, Clave: j2, Capacidad: 6, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:21:03'),
+(21,'tblbebidas','ID: 12, Nombre: Limonada','DELETE','2024-08-05 14:39:35'),
+(22,'tblUsuarios','ID:32, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 14:39:39'),
+(23,'tblbebidas','ID: 13, Nombre: jabs','DELETE','2024-08-05 14:39:43'),
+(24,'tblcomidas','ID: 11, Nombre: Tacos al Pastor','DELETE','2024-08-05 14:39:47'),
+(25,'tblcomidas','ID: 12, Nombre: Jabs','DELETE','2024-08-05 14:39:51'),
+(26,'tblpostres','ID: 14, Nombre: JABS','DELETE','2024-08-05 14:39:54'),
+(27,'tblpostres','ID: 13, Nombre: Pastel de Chocolate','DELETE','2024-08-05 14:39:59'),
+(28,'tblmesa','ID: 31, Clave: m1, Capacidad: 6, Costo: 300.00, Zona: 1, Imagen: mesa_001.jpg','DELETE','2024-08-05 14:40:06'),
+(29,'tblmesa','ID: 40, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 1, Imagen: images.png','DELETE','2024-08-05 14:40:14'),
+(30,'tblzona','ID: 23, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-05 14:40:18'),
+(31,'tblzona','ID: 24, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 14:40:22');
+
 /*Table structure for table `tblagenda` */
 
 DROP TABLE IF EXISTS `tblagenda`;
@@ -48,7 +94,7 @@ CREATE TABLE `tblbebidas` (
   `vchDescripcion` varchar(255) DEFAULT NULL,
   `vchImagen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idBebida`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblbebidas` */
 
@@ -60,7 +106,7 @@ insert  into `tblbebidas`(`idBebida`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`v
 (5,'Cerveza',40.00,'Delicisa cerveza fria,especialidad a escoger','cerveza.webp'),
 (6,'Limonada',35.00,'Refrescante limonada recien hecha super fria','limonada.jpeg'),
 (7,'Piña Colada',70.00,'Deliciosa piña colada,con fruta natural,con y sin alcohol','piñacolada.jpg'),
-(9,'Mojito',67.00,'Refrescante mojito,tequila a escoger con rodajas de limon y hojas menta','mojito.jpg');
+(9,'Mojito',64.00,'Refrescante mojito,tequila a escoger con rodajas de limon y hojas menta','mojito.jpg');
 
 /*Table structure for table `tblcliente` */
 
@@ -94,7 +140,7 @@ CREATE TABLE `tblcomidas` (
   `vchDescripcion` varchar(200) DEFAULT NULL,
   `vchImagen` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`idComida`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblcomidas` */
 
@@ -106,7 +152,7 @@ insert  into `tblcomidas`(`idComida`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`v
 (5,'Tacos',75.00,'Tortilla recien hecha, salsa a escoger, especialidades','tacos.webp'),
 (6,'pulpo en crema',350.00,'Delicioso pulpo a la braza en una crema de chipotle','pulpoencrema.jpg'),
 (7,'Sushi',350.00,'Distintas presentaciones de sushis a escoger','sushi.webp'),
-(8,'Corte',400.00,'Corte de carne a la braza, acompañada de esparragos y papas a la francesa','corte.webp');
+(8,'Corte',401.00,'Corte de carne a la braza, acompañada de esparragos y papas a la francesa','corte.webp');
 
 /*Table structure for table `tblmenu` */
 
@@ -152,7 +198,7 @@ CREATE TABLE `tblmesa` (
   PRIMARY KEY (`IdMesa`),
   KEY `FK_Mesa_Zona` (`IdZona`),
   CONSTRAINT `FK_Mesa_Zona` FOREIGN KEY (`IdZona`) REFERENCES `tblzona` (`IdZona`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblmesa` */
 
@@ -209,7 +255,7 @@ CREATE TABLE `tblpostres` (
   `vchDescripcion` varchar(255) DEFAULT NULL,
   `vchImagen` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idPostre`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblpostres` */
 
@@ -222,7 +268,7 @@ insert  into `tblpostres`(`idPostre`,`vchNombre`,`fltPrecio`,`vchDescripcion`,`v
 (7,'Helado',70.00,'DEliciosos Sabores a escoger,variedad de toppings ','helado.jpg'),
 (8,'Pastel de tres leches',75.00,'Pan esponjoso,cubierta de chantilly y trozos de nuez','pasteltresleches.webp'),
 (9,'Pastel de zanahoria',75.00,'Delicioso Pan esponjoso recien horneado con nueces','pastelzanahoria.jpg'),
-(10,'Torreja',72.00,'Pan suave,canela espolvoreada y bola de helado a escoger','torreja.jpg');
+(10,'Torreja',71.00,'Pan suave,canela espolvoreada y bola de helado a escoger','torreja.jpg');
 
 /*Table structure for table `tblreserva` */
 
@@ -279,7 +325,7 @@ CREATE TABLE `tblusuarios` (
   `vchPassword` varchar(300) DEFAULT NULL,
   `TipoUsuario` enum('Cliente','Empleado','Administrador') DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblusuarios` */
 
@@ -289,7 +335,8 @@ insert  into `tblusuarios`(`idUsuario`,`vchNombre`,`vchApellidos`,`vchNoTelefono
 (3,'Josmar Aldair','Bautista Saavedra','4831290696','josmar050110@gmail.com','c30d2d6dfe8c5ae3a3e9b9cef0d36f59','Administrador'),
 (14,'JABS','Meraz','4431290696','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado'),
 (17,'Diana','Palacios','4431290698','Diana@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','Empleado'),
-(25,'JABSALDAIR','SAAVEDRA','1234567890','JABSALDAIR@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado');
+(25,'JABSALDAIR','SAAVEDRA','1234567890','JABSALDAIR@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado'),
+(28,'Josmar','Bautista','0987654321','Josmar1234567890@gmail.com','d545fc3de0730ee98744331a54a5dfaf','Empleado');
 
 /*Table structure for table `tblzona` */
 
@@ -300,7 +347,7 @@ CREATE TABLE `tblzona` (
   `vchUbicacion` varchar(100) DEFAULT NULL,
   `vchImagen` varchar(100) NOT NULL,
   PRIMARY KEY (`IdZona`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblzona` */
 
@@ -309,6 +356,66 @@ insert  into `tblzona`(`IdZona`,`vchUbicacion`,`vchImagen`) values
 (2,'Terrasa','Terrasa.webp'),
 (3,'ZonaVIp','ZonaVIP.webp'),
 (4,'ZonaComun','ZonaComun.webp');
+
+/* Trigger structure for table `tblbebidas` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_bebida` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_bebida` AFTER DELETE ON `tblbebidas` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblbebidas', CONCAT('ID: ', OLD.idBebida, ', Nombre: ', OLD.vchNombre), 'DELETE');
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `tblcomidas` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_comida` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_comida` AFTER DELETE ON `tblcomidas` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblcomidas', CONCAT('ID: ', OLD.idComida, ', Nombre: ', OLD.vchNombre), 'DELETE');
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `tblmesa` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_mesa` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_mesa` AFTER DELETE ON `tblmesa` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblmesa', CONCAT('ID: ', OLD.IdMesa, ', Clave: ', OLD.ClaveMesa, ', Capacidad: ', OLD.Capasidad, ', Costo: ', OLD.Costo, ', Zona: ', OLD.IdZona, ', Imagen: ', OLD.vchImagen), 'DELETE');
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `tblpostres` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_postre` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_postre` AFTER DELETE ON `tblpostres` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblpostres', CONCAT('ID: ', OLD.idPostre, ', Nombre: ', OLD.vchNombre), 'DELETE');
+END */$$
+
+
+DELIMITER ;
 
 /* Trigger structure for table `tblreserva` */
 
@@ -372,6 +479,36 @@ BEGIN
         -- Manejo de error si no hay suficientes mesas
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No hay suficientes mesas disponibles para cumplir con la reserva.';
     END IF;
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `tblusuarios` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_usuario` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_usuario` AFTER DELETE ON `tblusuarios` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblUsuarios', CONCAT('ID:', OLD.idUsuario, ', Nombre:', OLD.vchNombre,', Email:', OLD.vchEmail, ', Tipo:', OLD.TipoUsuario), 'DELETE');
+END */$$
+
+
+DELIMITER ;
+
+/* Trigger structure for table `tblzona` */
+
+DELIMITER $$
+
+/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `after_delete_zona` */$$
+
+/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `after_delete_zona` AFTER DELETE ON `tblzona` FOR EACH ROW 
+BEGIN
+    INSERT INTO bitacora_eliminaciones (tabla, informacion_eliminada, tipo_accion) 
+    VALUES ('tblzona', CONCAT('ID: ', OLD.IdZona, ', Ubicación: ', OLD.vchUbicacion, ', Imagen: ', OLD.vchImagen), 'DELETE');
 END */$$
 
 
@@ -481,20 +618,17 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spActualizarMesa`(
     IN pIdMesa INT,
-    IN pClaveMesa VARCHAR(255),
+    IN pClaveMesa VARCHAR(5),
     IN pCapacidad INT,
-    IN pCosto FLOAT,
-    IN pIdZona INT,
-    IN pImagen VARCHAR(255)
+    IN pCosto FLOAT
 )
 BEGIN
+    -- Actualizar tabla tblmesa
     UPDATE tblmesa
     SET 
         ClaveMesa = pClaveMesa,
-        Capacidad = pCapacidad,
-        Costo = pCosto,
-        IdZona = pIdZona,
-        vchImagen = pImagen
+        Capasidad = pCapacidad,
+        Costo = pCosto
     WHERE 
         IdMesa = pIdMesa;
 END */$$
@@ -684,6 +818,25 @@ BEGIN
 		SELECT idUsuario, vchNombre, TipoUsuario FROM tblusuarios
 		WHERE vchEmail = email;
 
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spConsultarEliminaciones` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarEliminaciones` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarEliminaciones`()
+BEGIN
+    SELECT 
+        idBitacora,
+        tabla,
+        informacion_eliminada,
+        tipo_accion,
+        fecha_accion
+    FROM 
+        bitacora_eliminaciones;
 END */$$
 DELIMITER ;
 
@@ -981,7 +1134,7 @@ DELIMITER $$
     IN imagen VARCHAR(100)
 )
 BEGIN
-    INSERT INTO tblmesa (ClaveMesa, NumeroDeComensales, Costo, IdZona, vchImagen)
+    INSERT INTO tblmesa (ClaveMesa, Capasidad, Costo, IdZona, vchImagen)
     VALUES (Clave, capacidad, costo, zona, imagen);
 END */$$
 DELIMITER ;
