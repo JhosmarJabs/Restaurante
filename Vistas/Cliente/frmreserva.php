@@ -1,6 +1,6 @@
 <div class="contenedor-reserva">
         <div class="rejilla-reserva">
-            <form class="datos-formulario-reserva" action="/restaurante/index?clase=controladorcliente&metodo=SolicitarReservar" method="POST">
+            <form class="datos-formulario-reserva" action="/restaurante/index?clase=controladorcliente&metodo=Solicitar" method="POST">
                 <h1 class="titulo-reserva">Formulario de reservacion</h1>
                 <div class="espacio-vertical-reserva">
                     <label for="nombre" class="etiqueta-reserva">Nombre del cliente</label>
@@ -79,42 +79,8 @@
                         </select>
                     </div>
                     <button class="input-reserva centrado-reserva boton-reserva maximo-reserva" value="btnSolicitar">Solicitar</button>
-                    <div class="rejilla-reserva columnas-3-reserva gap-pequeno-reserva">
-                    <div id="9">
-                        <label for="costo" class="etiqueta-reserva">Costo</label>
-                        <?php
-                        if (isset($Costo) && $Costo !== null) {
-                            while ($CostoT = $Costo->fetch_object()) {
-                                echo '<input id="txtCosto" name="txtCosto" class="input-reserva med-reserva" type="number" value="' . $CostoT->Costo . '" step="0.01" readonly>';
-                            }
-                        } else {
-                            echo '<input id="txtCosto" name="txtCosto" class="input-reserva med-reserva" type="number" value="0" step="0.01">';
-                        }
-                        ?>
-                    </div>
-                    <div id="10">
-                        <label for="anticipo" class="etiqueta-reserva">Anticipo</label>
-                        <input id="txtAnticipo" name="txtAnticipo" class="input-reserva med-reserva" type="number" value="0" step="0.01">
-                    </div>
-                    <div id="11">
-                        <label for="total" class="etiqueta-reserva">Total</label>
-                        <input id="txtTotal" name="txtTotal" class="input-reserva med-reserva" type="number" value="0" step="0.01" readonly>
-                    </div>
                 </div>
-                <script>
-                    function calcularTotal() {
-                        var costo = parseFloat(document.getElementById('txtCosto').value) || 0;
-                        var anticipo = parseFloat(document.getElementById('txtAnticipo').value) || 0;
-                        var total = costo - anticipo;
-                        document.getElementById('txtTotal').value = total.toFixed(2);
-                    }
-                    // Configurar los eventos para recalcular cuando los valores cambian
-                    document.getElementById('txtCosto').addEventListener('input', calcularTotal);
-                    document.getElementById('txtAnticipo').addEventListener('input', calcularTotal);
-                    // Ejecutar cálculo inicial si ya hay un costo predefinido
-                    calcularTotal();
-                </script>
-                    <button class="input-reserva centrado-reserva boton-reserva maximo-reserva" value="btnReservar">Reservar</button>
+
                 </div>
                 <script>
                     const selectElement = document.getElementById('invitados');

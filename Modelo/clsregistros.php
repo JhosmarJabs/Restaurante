@@ -78,27 +78,36 @@ class clsregistros extends clsconexion{
     }
     // Altacliente
     public function Solisitar($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia){
-        $sql = "CALL spCrearReserva($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia);";
+        $sql = "CALL spCrearReserva('$nombre', '$apellidos', '$telefono', '$fechaReservacion', '$horaInicio', '$horaFinal', '$ocasion', $invitados, $zonaPreferencia);";
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
 
-    public function BuscarReserva($idUsuario){
-        $sql = "CALL ObtenerCosto($idUsuario);";
-        $resultadoClientes = $this->conectar->query($sql);
-        return $datos = $resultadoClientes ? $resultadoClientes : null;
-    }
+    // public function BuscarReserva($idUsuario) {
+    //     $sql = "CALL SumaCostoUltimaReserva($idUsuario, @respuesta);";
+    //     if ($this->conectar->query($sql)) {
+    //         $sql = "SELECT @respuesta AS idreservas;";
+    //         $resultado = $this->conectar->query($sql);
+    //         return $resultado ? $resultado : null;
+    //     } else {
+    //         return null;
+    //     }
+    // }
     
-    public function ConsultaCosto($idres){
-        $sql = "CALL SumaCostoUltimaReserva($idres);";
-        $sql = "SELECT @TotalCosto;";
-        $resultadoClientes = $this->conectar->query($sql);
-        return $datos = $resultadoClientes ? $resultadoClientes : null;
-
+    public function ConsultaCosto($idres) {
+        // Ejecutar ambas consultas
+        $sql = "CALL SumaCostoUltimaReserva($idres, @TotalCosto);";
+        if ($this->conectar->query($sql)) {
+            $sql = "SELECT @TotalCosto AS TotalCosto;";
+            $resultado = $this->conectar->query($sql);
+            return $resultado ? $resultado : null;
+        } else {
+            return null;
+        }
     }
 
     public function PagoReserva($IdCliente, $anticipo, $total){
-        $sql = "CALL PagoReserva($IdCliente, $anticipo, $total);";
+        $sql = "CALL spInsertarPago($IdCliente, $anticipo, $total);";
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
