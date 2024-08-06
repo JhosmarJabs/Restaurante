@@ -6,7 +6,7 @@
             <div class="texto-heroe">
                 <h2>Bienvenido a Restaurante Gourmet</h2>
                 <p>Disfruta de una experiencia culinaria excepcional en un ambiente acogedor y elegante.</p>
-                <a href="#" class="boton-reservar">Reservar una mesa</a>
+                <a href="/restaurante/index?clase=controladorcliente&metodo=reservas" class="boton-reservar">Reservar una mesa</a>
             </div>
         </section>
         <div class="contenedor-rejilla">

@@ -259,7 +259,7 @@
                                 echo '<form class="form" action="/restaurante/index?clase=controladoradministrador&metodo=EliminaActualizaPostre" method="POST">';
                                 echo '<input type="hidden" name="txtIdPostre" value="' . $postre->idPostre . '">';
                                 echo '<tr>';
-                                echo '<td> <input type="text" name="txtNombrePostre" value="' . $postre->vchnombre . '" readonly> </td>';
+                                echo '<td> <input type="text" name="txtNombrePostre" value="' . $postre->vchNombre . '" readonly> </td>';
                                 echo '<td> <input type="text" name="txtDescripcionPostre" value="' . $postre->vchDescripcion . '" ></td>';
                                 echo '<td> <input type="text" name="txtCostoPostre" value="' . $postre->fltPrecio . '" ></td>';
                                 echo '<td> <img src="img/Postres/' . $postre->vchImagen . '" alt="Imagen del Postre" width="150"> </td>';
@@ -356,16 +356,12 @@
                 <form action="/restaurante/index?clase=controladoradministrador&metodo=altabebida" method="POST" class="formularioAltas" enctype="multipart/form-data">
                     <label for="nombre-bebida">Nombre:</label>
                     <input type="text" id="nombre-bebida" name="txtnombre-bebida" required pattern="^[a-zA-Z\s]+$" title="El nombre solo debe contener letras y espacios.">
-        
                     <label for="descripcion-bebida">Descripción:</label>
                     <input type="text" id="descripcion-bebida" name="txtdescripcion-bebida" required pattern="^[a-zA-Z0-9\s]+$" title="La descripción solo debe contener letras, números y espacios.">
-        
                     <label for="costo-bebida">Costo:</label>
                     <input type="number" id="costo-bebida" name="txtcosto-bebida" required min="0" step="0.01" title="Ingrese un costo válido.">
-        
                     <label for="imagen-bebida">Imagen:</label>
                     <input type="file" id="imagen-bebida" name="txtimagen-bebida" required accept="image/*" title="Seleccione un archivo de imagen válido.">
-        
                     <button type="submit">Guardar</button>
                 </form>
                 </div>

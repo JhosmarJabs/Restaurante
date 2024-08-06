@@ -317,24 +317,15 @@ class controladoradministrador
         }
         header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
         exit();
-    }    
-    public function EliminaActualizaBebida() {
-        $registro = new clsregistros();
-        if (isset($_POST['btnEliminar'])) {
-            $id = $_POST['txtIdBebida'];
-            $registro->EliminarBebida($id);
-            $Consulta = $registro->ConsultaBebidas();
-        } else if (isset($_POST['btnActualizar'])) {
-            $id = $_POST['txtIdBebida'];
-            $nombre = $_POST['txtNombreBebida'];
-            $descripcion = $_POST['txtDescripcionBebida'];
-            $precio = $_POST['txtCostoBebida'];
-            $registro->ActualizarBebida($id, $nombre, $descripcion, $precio);
-            $Consulta = $registro->ConsultaBebidas();
-        }
+    } 
+    
+    public function vistareportes() {
+
         header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
         exit();
-    }                        
+    }    
+
+
 
     public function reportes()
     {
