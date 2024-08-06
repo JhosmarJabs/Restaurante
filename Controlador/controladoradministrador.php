@@ -341,7 +341,7 @@ class controladoradministrador
         $reporte = new clsReportes(); // Clase que está en el modelo
         if (empty($_POST)) {
             // Crear el objeto FPDF
-            $pdf = new FPDF();
+            $pdf = new FPDF('L', 'mm', 'A4'); // Agregar orientación horizontal
             // Agregar una página
             $pdf->AddPage();
             // $pdf->Cell(190,30,$pdf->Image('./img/becas.png',130,12,60,30),0,1,'R');
@@ -356,21 +356,21 @@ class controladoradministrador
                 // Establecer la fuente y el tamaño del encabezado de la tabla
                 $pdf->SetFont('Arial', 'B', 7);
                 // Imprimir los encabezados de la tabla
-                $pdf->Cell(7, 8, 'ID', 1, 0, 'C');
-                $pdf->Cell(17, 8, 'Tabla', 1, 0, 'C');
-                $pdf->Cell(90, 8, 'Informacion', 1, 0, 'C');
-                $pdf->Cell(30, 8, 'Tipo de accion', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'ID', 1, 0, 'C');
+                $pdf->Cell(30, 8, 'Tabla', 1, 0, 'C');
+                $pdf->Cell(100, 8, 'Informacion', 1, 0, 'C');
+                $pdf->Cell(40, 8, 'Tipo de accion', 1, 0, 'C');
                 $pdf->Cell(40, 8, 'Fecha de accion', 1, 0, 'C');
                 $pdf->Ln(); // Salto de línea después de los encabezados
                 // Establecer la fuente y el tamaño del contenido de la tabla
                 $pdf->SetFont('Arial', '', 10);
                 // Imprimir los datos de la tabla
                 while ($row = $Consulta->fetch_assoc()) {
-                    $pdf->Cell(7, 8, $row["idBitacora"], 1, 0, 'L');
-                    $pdf->Cell(17, 8, $row["tabla"], 1, 0, 'L');
-                    $pdf->Cell(90, 8, $row["informacion_eliminada"], 1, 0, 'C');
-                    $pdf->Cell(30, 8, $row["tipo_accion"], 1, 0, 'C');
-                    $pdf->Cell(40, 8, $row["fecha_accion"], 1, 0, 'C');
+                    $pdf->Cell(15, 8, $row["idBitacora"], 1, 0, 'L');
+                    $pdf->Cell(30, 8, $row["tabla"], 1, 0, 'L');
+                    $pdf->Cell(100, 8, $row["informacion_eliminada"], 1, 0, 'L');
+                    $pdf->Cell(40, 8, $row["tipo_accion"], 1, 0, 'L');
+                    $pdf->Cell(40, 8, $row["fecha_accion"], 1, 0, 'L');
                     $pdf->Ln(); // Salto de línea después de cada fila
                 }
                 // Salto de línea después de la tabla
@@ -386,7 +386,7 @@ class controladoradministrador
             exit();
         }
     }
-
+    
     public function cerrar()
 	{		
 		session_destroy();

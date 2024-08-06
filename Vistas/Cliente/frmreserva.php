@@ -9,10 +9,10 @@
                         if (isset($datos) && $datos !== null) {
                             while ($dat = $datos->fetch_object()) {
                                 echo '<div id="1">';
-                                echo '<input class="input-reserva etiqueta-reserva" type="text" placeholder="Nombre(s)" value="'.$dat->vchNombre.'"readonly>';
+                                echo '<input class="input-reserva etiqueta-reserva" name="txtNombre" type="text" placeholder="Nombre(s)" value="'.$dat->vchNombre.'"readonly>';
                                 echo '</div>';
                                 echo '<div id="1">';
-                                echo '<input class="input-reserva etiqueta-reserva" type="text" placeholder="Apellido(s)" value="'.$dat->vchApellidos.'"readonly>';
+                                echo '<input class="input-reserva etiqueta-reserva" name="txtApellido" type="text" placeholder="Apellido(s)" value="'.$dat->vchApellidos.'"readonly>';
                                 echo '</div>';
                             }
                         } else {
@@ -27,27 +27,26 @@
                     </div>
                     <div id="2">
                         <label for="telefono" class="etiqueta-reserva">Numero de telefono</label>
-                        <input class="input-reserva max-reserva" type="number">
+                        <input class="input-reserva max-reserva" name="txtNomeroTelefonico" nametype="number">
                     </div>
                     <div id="3">
                         <label for="fecha" class="etiqueta-reserva">Fecha de reservacion</label>
-                        <input class="input-reserva max-reserva" type="date">
+                        <input class="input-reserva max-reserva" name="txtFecha" type="date">
                     </div>
                     <div class="rejilla-reserva columnas-2-reserva gap-pequeno-reserva">
                         <div id="4">
                             <label for="hora-inicio" class="etiqueta-reserva">Hora de Inicio</label>
-                            <input class="input-reserva" type="time">
+                            <input class="input-reserva" name="txtHoraI" type="time">
                         </div>
                         <div id="5">
                             <label for="hora-final" class="etiqueta-reserva">Hora de Final</label>
-                            <input class="input-reserva" type="time">
+                            <input class="input-reserva" name="txtHoraF" type="time">
                         </div>
                     </div>
                     <div id="6">
                         <label for="ocasion" class="etiqueta-reserva">Ocacion</label>
 
                         <select class="input-reserva max-reserva" id="Ocacion" name="txtOcacion" required>
-                            <option  value="" disabled selected>Selecciona una zona</option>
                             <?php
                             if (isset($idOca) && $idOca !== null) {
                                 while ($Ocacion = $idOca->fetch_object()) {
@@ -61,18 +60,17 @@
                     </div>
                     <div id="7">
                         <label for="invitados" class="etiqueta-reserva">Numero de comensales</label>
-                        <select id="invitados" name="invitados" class="input-reserva maximo-reserva">
+                        <select id="invitados" name="txtinvitados" class="input-reserva maximo-reserva">
                         <option value="" disabled selected></option>
                         </select>
                     </div>
                     <div id="8">
                         <label for="zona-preferencia" class="etiqueta-reserva">Zona de preferencia</label>
                         <select class="input-reserva max-reserva" id="zona-reserva" name="txtZonaReserva" required>
-                            <option  value="" disabled selected>Selecciona una zona</option>
                             <?php
                             if (isset($datosZonas) && $datosZonas !== null) {
                                 while ($zonaRes = $datosZonas->fetch_object()) {
-                                    echo '<option value="' . $zonaRes->IdZona . '">' . $zonaRes->vchUbicacion . '</option>';
+                                    echo '<option  value="' . $zonaRes->IdZona . '">' . $zonaRes->vchUbicacion . '</option>';
                                 }
                             } else {
                                 echo '<option value="">No hay zonas disponibles</option>';

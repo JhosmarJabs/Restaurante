@@ -90,9 +90,11 @@ class clsregistros extends clsconexion{
     }
     
     public function ConsultaCosto($idres){
-        $sql = "CALL ObtenerCosto($idres);";
+        $sql = "CALL SumaCostoUltimaReserva($idres);";
+        $sql = "SELECT @TotalCosto;";
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
+
     }
 
     public function PagoReserva($IdCliente, $anticipo, $total){

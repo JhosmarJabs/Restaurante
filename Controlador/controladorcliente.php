@@ -55,43 +55,41 @@ class controladorcliente
     }
     public function SolicitarReservar() {
         $registroReservas = new clsregistros();
-        $CostoBD = new clsregistros;
-        $BusqReserva = new clsregistros;
-        $Pago = new clsregistros;
-        if (isset($_POST['btnSolicitar'])) {
-            $IdCliente= isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
-            $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : NULL;
-            $apellidos = isset($_POST['apellido']) ? $_POST['apellido'] : NULL;
-            $telefono = isset($_POST['telefono']) ? $_POST['telefono'] : NULL;
+        $CostoBD = new clsregistros();
+        $BusqReserva = new clsregistros();
+        $Pago = new clsregistros();
 
-            $fechaReservacion = isset($_POST['fecha']) ? $_POST['fecha'] : NULL;
-            $horaInicio = isset($_POST['hora-inicio']) ? $_POST['hora-inicio'] : NULL;
-            $horaFinal = isset($_POST['hora-final']) ? $_POST['hora-final'] : NULL;
-            $ocasion = isset($_POST['ocasion']) ? $_POST['ocasion'] : NULL;
-            $invitados = isset($_POST['invitados']) ? $_POST['invitados'] : NULL;
-            $zonaPreferencia = isset($_POST['zona-preferencia']) ? $_POST['zona-preferencia'] : NULL;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $IdCliente = isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
+            $nombre = isset($_POST['txtNombre']) ? $_POST['txtNombre'] : NULL;
+            $apellidos = isset($_POST['txtApellido']) ? $_POST['txtApellido'] : NULL;
+            $telefono = isset($_POST['txtNomeroTelefonico']) ? $_POST['txtNomeroTelefonico'] : NULL;
+
+            $fechaReservacion = isset($_POST['txtFecha']) ? $_POST['txtFecha'] : NULL;
+            $horaInicio = isset($_POST['txtHoraI']) ? $_POST['txtHoraI'] : NULL;
+            $horaFinal = isset($_POST['txtHoraF']) ? $_POST['txtHoraF'] : NULL;
+            $ocasion = isset($_POST['txtOcacion']) ? $_POST['txtOcacion'] : NULL;
+            $invitados = isset($_POST['txtinvitados']) ? $_POST['txtinvitados'] : NULL;
+            $zonaPreferencia = isset($_POST['txtZonaReserva']) ? $_POST['txtZonaReserva'] : NULL;
             
+            // Solicitar la reserva
             $altaReservaExitosa = $registroReservas->Solisitar($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia);
 
-            $idres = $BusqReserva->BuscarReserva($IdCliente);
-            $Costo = $CostoBD->ConsultaCosto($idres);
-            $costo = isset($_POST['costo']) ? $_POST['costo'] : NULL;
+            if ($altaReservaExitosa) {
+                // Obtener la última reserva del cliente
+                $idres = $BusqReserva->BuscarReserva($IdCliente);
+                $Costo = $CostoBD->ConsultaCosto($idres);
+                
+                // Mostrar datos para depuración
+            } else {
+                echo "Error al solicitar la reserva.";
+            }
         } else {
-            $vista="Vistas/Cliente/frmreserva.php";
-            include_once("Vistas/frmCliente.php");  
-        }
-
-        if (isset($_POST['btnReservar'])) {
-            // Datos de entrad
-            $IdCliente= isset($_SESSION['id']) ? $_SESSION['id'] : NULL;
-            $anticipo = isset($_POST['anticipo']) ? $_POST['anticipo'] : NULL;
-            $total = isset($_POST['total']) ? $_POST['total'] : NULL;
-            $pagoFinal= $pago -> PagoReserva($IdCliente,$anticipo, $total);
-        } else {
-            $vista="Vistas/Cliente/frmreserva.php";
-            include_once("Vistas/frmCliente.php");  
+            echo "Método de solicitud no válido.";
         }
     }
+
+    
 }
 
 
