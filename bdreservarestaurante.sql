@@ -224,6 +224,29 @@ insert  into `tblmesa`(`IdMesa`,`ClaveMesa`,`Capasidad`,`Costo`,`IdZona`,`vchIma
 (19,'ZC4',8,600.00,4,'mesa3.jpg'),
 (20,'ZC5',4,300.00,4,'mesa6.jpg');
 
+/*Table structure for table `tblocasiones` */
+
+DROP TABLE IF EXISTS `tblocasiones`;
+
+CREATE TABLE `tblocasiones` (
+  `IdOcasiones` int(11) NOT NULL AUTO_INCREMENT,
+  `vchNombreOcasiones` varchar(255) NOT NULL,
+  PRIMARY KEY (`IdOcasiones`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tblocasiones` */
+
+insert  into `tblocasiones`(`IdOcasiones`,`vchNombreOcasiones`) values 
+(1,'Cumpleaños'),
+(2,'Aniversario'),
+(3,'Graduación'),
+(4,'Celebración de Trabajo'),
+(5,'Cena Romántica'),
+(6,'Reunión Familiar'),
+(7,'Despedida de Soltero(a)'),
+(8,'Agradecimiento'),
+(9,'Fiesta de Fin de Año');
+
 /*Table structure for table `tblpago` */
 
 DROP TABLE IF EXISTS `tblpago`;
@@ -233,8 +256,8 @@ CREATE TABLE `tblpago` (
   `IdCliente` int(11) DEFAULT NULL,
   `IdReserva` int(11) DEFAULT NULL,
   `Monto` decimal(10,2) DEFAULT NULL,
+  `Restante` decimal(10,2) DEFAULT NULL,
   `FechaPago` date DEFAULT NULL,
-  `MetodoPago` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`IdPago`),
   KEY `IdCliente` (`IdCliente`),
   KEY `IdReserva` (`IdReserva`),
@@ -283,16 +306,15 @@ CREATE TABLE `tblreserva` (
   `vchOcacion` varchar(100) DEFAULT NULL,
   `NoPersonas` int(11) DEFAULT NULL,
   `Idzona` int(11) DEFAULT NULL,
-  `EstadoReserva` enum('Disponible','Ocupado') NOT NULL,
   PRIMARY KEY (`IdReserva`),
   KEY `FK_Reserva_Cliente` (`IdCliente`),
   CONSTRAINT `FK_Reserva_Cliente` FOREIGN KEY (`IdCliente`) REFERENCES `tblcliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblreserva` */
 
-insert  into `tblreserva`(`IdReserva`,`IdCliente`,`dtFecha`,`HoraInicio`,`HoraFinal`,`vchOcacion`,`NoPersonas`,`Idzona`,`EstadoReserva`) values 
-(1,1,'2024-07-22','15:00:00',NULL,NULL,5,NULL,'Ocupado');
+insert  into `tblreserva`(`IdReserva`,`IdCliente`,`dtFecha`,`HoraInicio`,`HoraFinal`,`vchOcacion`,`NoPersonas`,`Idzona`) values 
+(1,1,'2024-07-22','15:00:00','15:00:00','2',5,2);
 
 /*Table structure for table `tblreservadetalle` */
 
@@ -308,7 +330,7 @@ CREATE TABLE `tblreservadetalle` (
   KEY `FK_ReservaDetalle_Reserva` (`IdReserva`),
   CONSTRAINT `FK_ReservaDetalle_Mesa` FOREIGN KEY (`idMesaAsignada`) REFERENCES `tblmesa` (`IdMesa`),
   CONSTRAINT `FK_ReservaDetalle_Reserva` FOREIGN KEY (`IdReserva`) REFERENCES `tblreserva` (`IdReserva`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblreservadetalle` */
 
@@ -331,7 +353,7 @@ CREATE TABLE `tblusuarios` (
 
 insert  into `tblusuarios`(`idUsuario`,`vchNombre`,`vchApellidos`,`vchNoTelefono`,`vchEmail`,`vchPassword`,`TipoUsuario`) values 
 (1,'Josmar',NULL,'7712194196','20230026@uthh.edu.mx','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
-(2,'Aldair',NULL,'4831290696','josmar050116@gmail.com','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
+(2,'Aldair','Bautista','4831290696','josmar050116@gmail.com','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
 (3,'Josmar Aldair','Bautista Saavedra','4831290696','josmar050110@gmail.com','c30d2d6dfe8c5ae3a3e9b9cef0d36f59','Administrador'),
 (14,'JABS','Meraz','4431290696','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado'),
 (17,'Diana','Palacios','4431290698','Diana@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','Empleado'),
@@ -431,15 +453,15 @@ BEGIN
     
     -- Variables para almacenar los valores de cada fila
     DECLARE vIdMesa INT;
-    DECLARE vNumeroDeComensales INT;
+    DECLARE vCapasidad INT;
     DECLARE vCosto DECIMAL(10,2);
 
     -- Cursor para seleccionar las mesas de la zona especificada ordenadas por capacidad de comensales
     DECLARE cursorMesas CURSOR FOR 
-    SELECT IdMesa, NumeroDeComensales, Costo 
-    FROM tblMesa
-    WHERE IdZona = NEW.IdZona 
-    ORDER BY NumeroDeComensales ASC;
+    SELECT IdMesa, Capasidad, Costo 
+    FROM tblmesa
+    WHERE IdZona = NEW.Idzona 
+    ORDER BY Capasidad ASC;
 
     -- Handlers para el cursor
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
@@ -448,13 +470,13 @@ BEGIN
     OPEN cursorMesas;
 
     read_loop: LOOP
-        FETCH cursorMesas INTO vIdMesa, vNumeroDeComensales, vCosto;
+        FETCH cursorMesas INTO vIdMesa, vCapasidad, vCosto;
         IF done THEN
             LEAVE read_loop;
         END IF;
         
         IF totalComensales < NEW.NoPersonas THEN
-            SET totalComensales = totalComensales + vNumeroDeComensales;
+            SET totalComensales = totalComensales + vCapasidad;
             SET mesasAsignadas = CONCAT(mesasAsignadas, vIdMesa, ',');
         END IF;
     END LOOP;
@@ -469,10 +491,11 @@ BEGIN
 
     -- Verificar si se han asignado suficientes mesas
     IF totalComensales >= NEW.NoPersonas THEN
-        -- Insertar las mesas asignadas en tblDetalleReserva
+        -- Insertar las mesas asignadas en tblreservadetalle
         WHILE LENGTH(mesasAsignadas) > 0 DO
             SET vIdMesa = SUBSTRING_INDEX(mesasAsignadas, ',', 1);
-            INSERT INTO tblDetalleReserva (IdReserva, idMesaAsignada) VALUES (NEW.IdReserva, vIdMesa);
+            INSERT INTO tblreservadetalle (IdReserva, idMesaAsignada, fltCosto) 
+            VALUES (NEW.IdReserva, vIdMesa, (SELECT Costo FROM tblmesa WHERE IdMesa = vIdMesa));
             SET mesasAsignadas = SUBSTRING(mesasAsignadas, LENGTH(vIdMesa) + 2);
         END WHILE;
     ELSE
@@ -512,6 +535,19 @@ BEGIN
 END */$$
 
 
+DELIMITER ;
+
+/* Procedure structure for procedure `ObtenerOcasiones` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `ObtenerOcasiones` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerOcasiones`()
+BEGIN
+    SELECT IdOcasiones, vchNombreOcasiones
+    FROM tblOcasiones;
+END */$$
 DELIMITER ;
 
 /* Procedure structure for procedure `spActualizarBebida` */
@@ -794,6 +830,20 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spConsultarClientes` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarClientes` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarClientes`(in IdCliente int)
+BEGIN
+	SELECT vchNombre, vchApellidos, vchNotelefono, vchEmail
+	FROM tblusuarios
+	WHERE idUsuario = IdCliente;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spConsultarComidas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spConsultarComidas` */;
@@ -906,30 +956,22 @@ DELIMITER $$
     IN Fecha DATE,
     IN HoraI TIME,
     IN HoraF TIME,
-    IN Ocacion VARCHAR(50),
+    IN Ocacion VARCHAR(100),
     IN NumPersonas INT,
-    IN Zona INT,
-    IN EstadoReserva ENUM('Disponible', 'Ocupado')
+    IN Zona INT
 )
 BEGIN
     DECLARE IdC INT;
-    DECLARE IdZ INT;
 
     -- Buscar Id del cliente
-    SELECT IdCliente
+    SELECT IdUsuario
     INTO IdC
-    FROM tblcliente
-    WHERE vchNombre = nombre;
-
-    -- Buscar Id de la zona
-    SELECT IdZona
-    INTO IdZ
-    FROM tblZona
-    WHERE Ubicacion = Zona;
+    FROM `tblusuarios`
+    WHERE vchNombre = nombre AND vchApellidos = Apellidos;
 
     -- Crear la reserva
-    INSERT INTO tblreserva (IdCliente, dtFecha, HoraInicio, HoraFinal, vchOcacion, NoPersonas, IdZona, EstadoReserva)
-    VALUES (IdC, Fecha, HoraI, HoraF, Ocacion, NumPersonas, IdZ, EstadoReserva);
+    INSERT INTO tblreserva (IdCliente, dtFecha, HoraInicio, HoraFinal, vchOcacion, NoPersonas, IdZona)
+    VALUES (IdC, Fecha, HoraI, HoraF, Ocacion, NumPersonas, Zona);
 END */$$
 DELIMITER ;
 
@@ -1148,8 +1190,7 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarPago`(
     IN Cliente VARCHAR(100),
     IN pMonto DECIMAL(10,2),
-    IN pFechaPago DATE,
-    IN pMetodoPago VARCHAR(50)
+    IN pFechaPago DATE
 )
 BEGIN
     DECLARE pIdCliente INT;
@@ -1168,8 +1209,8 @@ BEGIN
     LIMIT 1;
 
     -- Insertar el pago en la tabla tblPago
-    INSERT INTO tblPago (IdCliente, IdReserva, Monto, FechaPago, MetodoPago)
-    VALUES (pIdCliente, pIdReserva, pMonto, pFechaPago, pMetodoPago);
+    INSERT INTO tblPago (IdCliente, IdReserva, Monto, FechaPago)
+    VALUES (pIdCliente, pIdReserva, pMonto, pFechaPago);
 END */$$
 DELIMITER ;
 
@@ -1242,6 +1283,36 @@ BEGIN
 	ELSE
 		SET respuesta= FALSE;
 	END IF;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `SumaCostoUltimaReserva` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `SumaCostoUltimaReserva` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `SumaCostoUltimaReserva`(
+    IN pIdCliente INT,
+    OUT pTotalCosto DECIMAL(10,2)
+)
+BEGIN
+    DECLARE vUltimaReserva INT;
+
+    -- Buscar el último IdReserva para el cliente especificado
+    SELECT MAX(IdReserva) INTO vUltimaReserva
+    FROM tblreserva
+    WHERE IdCliente = pIdCliente;
+
+    -- Si existe una reserva para el cliente, calcular el total de costos
+    IF vUltimaReserva IS NOT NULL THEN
+        SELECT COALESCE(SUM(fltCosto), 0) INTO pTotalCosto
+        FROM tblreservadetalle
+        WHERE IdReserva = vUltimaReserva;
+    ELSE
+        -- Si no hay reserva para el cliente, retornar 0
+        SET pTotalCosto = 0;
+    END IF;
 END */$$
 DELIMITER ;
 

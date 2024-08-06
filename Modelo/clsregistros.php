@@ -65,6 +65,42 @@ class clsregistros extends clsconexion{
         $resultadoBebidas = $this->conectar->query($sql);
         return $resultadoBebidas ? $resultadoBebidas : null;
     }
+    // Consulta para clientes
+    public function ConsultaClientes($IdCliente) {
+        $sql = "CALL spConsultarClientes($IdCliente);";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+    public function ConsultaOcaciones() {
+        $sql = "CALL ObtenerOcasiones();";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+    // Altacliente
+    public function Solisitar($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia){
+        $sql = "CALL spCrearReserva($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia);";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+
+    public function BuscarReserva($idUsuario){
+        $sql = "CALL ObtenerCosto($idUsuario);";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+    
+    public function ConsultaCosto($idres){
+        $sql = "CALL ObtenerCosto($idres);";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+
+    public function PagoReserva($IdCliente, $anticipo, $total){
+        $sql = "CALL PagoReserva($IdCliente, $anticipo, $total);";
+        $resultadoClientes = $this->conectar->query($sql);
+        return $datos = $resultadoClientes ? $resultadoClientes : null;
+    }
+
 // Actualizar
     public function ActualizarEmpleado($id, $nombre, $apellidos, $telefono, $email){
         $sql = "CALL spActualizarEmpleado($id, '$nombre', '$apellidos', '$telefono', '$email');";

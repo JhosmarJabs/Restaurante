@@ -44,8 +44,8 @@ class controladorpublico
                         session_start();
                         $_SESSION['id'] = $datos['idUsuario'];
                         $_SESSION['nombre'] = $datos['vchNombre'];
-                        $vista = "Vistas/Cliente/frmcontenidocliente.php";
-                        include_once("Vistas/frmcliente.php");
+                        header('Location: /restaurante/index?clase=controladorcliente&metodo=inicio');
+                        exit();
                     }
                     else
                     {
@@ -100,8 +100,8 @@ class controladorpublico
                 session_start();
                 $_SESSION['id'] = $datos['idUsuario'];
                 $_SESSION['nombre'] = $datos['vchNombre'];
-                $vista = "Vistas/cliente/frmcontenidocliente.php";
-                include_once("Vistas/frmcliente.php");
+                header('Location: /restaurante/index?clase=controladorcliente&metodo=inicio');
+                exit();
             }
             else
             {
