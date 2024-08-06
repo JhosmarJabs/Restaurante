@@ -358,8 +358,8 @@ class controladoradministrador
                 // Imprimir los encabezados de la tabla
                 $pdf->Cell(15, 8, 'ID', 1, 0, 'C');
                 $pdf->Cell(30, 8, 'Tabla', 1, 0, 'C');
-                $pdf->Cell(100, 8, 'Informacion', 1, 0, 'C');
-                $pdf->Cell(40, 8, 'Tipo de accion', 1, 0, 'C');
+                $pdf->Cell(145, 8, 'Informacion', 1, 0, 'C');
+                $pdf->Cell(30, 8, 'Tipo de accion', 1, 0, 'C');
                 $pdf->Cell(40, 8, 'Fecha de accion', 1, 0, 'C');
                 $pdf->Ln(); // Salto de línea después de los encabezados
                 // Establecer la fuente y el tamaño del contenido de la tabla
@@ -368,8 +368,8 @@ class controladoradministrador
                 while ($row = $Consulta->fetch_assoc()) {
                     $pdf->Cell(15, 8, $row["idBitacora"], 1, 0, 'L');
                     $pdf->Cell(30, 8, $row["tabla"], 1, 0, 'L');
-                    $pdf->Cell(100, 8, $row["informacion_eliminada"], 1, 0, 'L');
-                    $pdf->Cell(40, 8, $row["tipo_accion"], 1, 0, 'L');
+                    $pdf->Cell(145, 8, $row["informacion_eliminada"], 1, 0, 'L');
+                    $pdf->Cell(30, 8, $row["tipo_accion"], 1, 0, 'L');
                     $pdf->Cell(40, 8, $row["fecha_accion"], 1, 0, 'L');
                     $pdf->Ln(); // Salto de línea después de cada fila
                 }
