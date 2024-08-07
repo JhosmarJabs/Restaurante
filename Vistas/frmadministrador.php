@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="Estilos/footer.css">
     <link rel="stylesheet" href="Estilos/altas.css">
     <!-- <link rel="stylesheet" href="Estilos/menu.css"> -->
-    <!-- <link rel="stylesheet" href="Estilos/reservas.css"> -->
+    <link rel="stylesheet" href="Estilos/reservas.css">
     <!-- <link rel="stylesheet" href="Estilos/principal.css"> -->
     <title>Huejutla Sabores</title>
 </head>

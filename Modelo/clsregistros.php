@@ -82,17 +82,6 @@ class clsregistros extends clsconexion{
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
-
-    // public function BuscarReserva($idUsuario) {
-    //     $sql = "CALL SumaCostoUltimaReserva($idUsuario, @respuesta);";
-    //     if ($this->conectar->query($sql)) {
-    //         $sql = "SELECT @respuesta AS idreservas;";
-    //         $resultado = $this->conectar->query($sql);
-    //         return $resultado ? $resultado : null;
-    //     } else {
-    //         return null;
-    //     }
-    // }
     
     public function ConsultaCosto($idres) {
         // Ejecutar ambas consultas
@@ -104,6 +93,13 @@ class clsregistros extends clsconexion{
         } else {
             return null;
         }
+    }
+
+    public function ConsultaTablas(){
+        $sql = "CALL obtenerTablasUnicas();";
+        $resultadoTablas = $this->conectar->query($sql);
+        return $datos = $resultadoTablas ? $resultadoTablas : null;
+
     }
 
     public function PagoReserva($IdCliente, $anticipo, $total){

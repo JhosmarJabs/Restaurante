@@ -320,9 +320,11 @@ class controladoradministrador
     } 
     
     public function vistareportes() {
-
-        header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
-        exit();
+        $ConsutaTablas = new clsregistros();
+        $TablasR = $ConsutaTablas->ConsultaTablas();
+        //vistas
+        $vista = "Vistas/Administrador/frmreportes.php";
+        include_once("Vistas/frmadministrador.php");
     }    
 
 
@@ -330,7 +332,10 @@ class controladoradministrador
     public function reportes()
     {
         $reporte = new clsReportes(); // Clase que está en el modelo
-        if (empty($_POST)) {
+        if (!empty($_POST)) {
+            $tabla = isset($_POST['txttabla']) ? $_POST['txttabla'] : NULL;
+            $fecha = isset($_POST['txtfecha']) ? $_POST['txtfecha'] : NULL;
+            $Consulta = $reporte->filtrarBitacoraPorFechaYTabla($fecha, $tabla);  
             // Crear el objeto FPDF
             $pdf = new FPDF('L', 'mm', 'A4'); // Agregar orientación horizontal
             // Agregar una página
@@ -340,7 +345,6 @@ class controladoradministrador
             $pdf->SetFont('Arial', 'B', 20);
             $pdf->Cell(0, 20, utf8_decode('Reporte de eliminaciones'), 0, 1, 'C');
             // Consulta a la base de datos
-            $Consulta = $reporte->ConsultaBitacora();  
             // Centrar la tabla
             $pdf->SetLeftMargin(10);
             if ($Consulta->num_rows > 0) {
@@ -373,10 +377,12 @@ class controladoradministrador
                 echo "No se encontraron registros.";
             }
         } else {
-            header('Location: /restaurante/index?clase=controladoradministrador&metodo=inicio');
+            header('Location: /restaurante/index?clase=controladoradministrador&metodo=vistareportes');
             exit();
         }
     }
+    
+    
     
     public function cerrar()
 	{		
