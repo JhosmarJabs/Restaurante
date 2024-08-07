@@ -25,63 +25,46 @@ CREATE TABLE `bitacora_eliminaciones` (
   `tabla` varchar(50) DEFAULT NULL,
   `informacion_eliminada` varchar(255) DEFAULT NULL,
   `tipo_accion` varchar(50) DEFAULT NULL,
-  `fecha_accion` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fecha_accion` date NOT NULL,
   PRIMARY KEY (`idBitacora`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `bitacora_eliminaciones` */
 
 insert  into `bitacora_eliminaciones`(`idBitacora`,`tabla`,`informacion_eliminada`,`tipo_accion`,`fecha_accion`) values 
-(2,'tblzona','ID: 19, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-05 11:55:01'),
-(3,'tblzona','ID: 20, Ubicación: pruevas, Imagen: ZonaComun.webp','DELETE','2024-08-05 11:55:24'),
-(5,'tblUsuarios','ID:30, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 12:52:16'),
-(6,'tblpostres','ID: 11, Nombre: Pastel de Chocolate','DELETE','2024-08-05 12:56:32'),
-(7,'tblbebidas','ID: 10, Nombre: Limonada','DELETE','2024-08-05 12:56:35'),
-(8,'tblcomidas','ID: 9, Nombre: Tacos al Pastor','DELETE','2024-08-05 13:05:38'),
-(9,'tblbebidas','ID: 11, Nombre: Limonada','DELETE','2024-08-05 13:07:49'),
-(10,'tblcomidas','ID: 10, Nombre: Tacos al Pastor','DELETE','2024-08-05 13:07:57'),
-(11,'tblpostres','ID: 12, Nombre: Pastel de Chocolate','DELETE','2024-08-05 13:08:01'),
-(12,'tblzona','ID: 22, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 13:08:11'),
-(13,'tblzona','ID: 21, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 13:08:15'),
-(14,'tblUsuarios','ID:31, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 13:08:18'),
-(15,'tblmesa','ID: 33, Clave: M3, Capacidad: 4, Costo: 500.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-05 13:29:11'),
-(16,'tblmesa','ID: 36, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:19'),
-(17,'tblmesa','ID: 37, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:26'),
-(18,'tblmesa','ID: 38, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:13:31'),
-(19,'tblmesa','ID: 35, Clave: M1, Capacidad: 4, Costo: 50.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-05 14:13:37'),
-(20,'tblmesa','ID: 39, Clave: j2, Capacidad: 6, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-05 14:21:03'),
-(21,'tblbebidas','ID: 12, Nombre: Limonada','DELETE','2024-08-05 14:39:35'),
-(22,'tblUsuarios','ID:32, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-05 14:39:39'),
-(23,'tblbebidas','ID: 13, Nombre: jabs','DELETE','2024-08-05 14:39:43'),
-(24,'tblcomidas','ID: 11, Nombre: Tacos al Pastor','DELETE','2024-08-05 14:39:47'),
-(25,'tblcomidas','ID: 12, Nombre: Jabs','DELETE','2024-08-05 14:39:51'),
-(26,'tblpostres','ID: 14, Nombre: JABS','DELETE','2024-08-05 14:39:54'),
-(27,'tblpostres','ID: 13, Nombre: Pastel de Chocolate','DELETE','2024-08-05 14:39:59'),
-(28,'tblmesa','ID: 31, Clave: m1, Capacidad: 6, Costo: 300.00, Zona: 1, Imagen: mesa_001.jpg','DELETE','2024-08-05 14:40:06'),
-(29,'tblmesa','ID: 40, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 1, Imagen: images.png','DELETE','2024-08-05 14:40:14'),
-(30,'tblzona','ID: 23, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-05 14:40:18'),
-(31,'tblzona','ID: 24, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-05 14:40:22');
-
-/*Table structure for table `tblagenda` */
-
-DROP TABLE IF EXISTS `tblagenda`;
-
-CREATE TABLE `tblagenda` (
-  `IdAgenda` int(11) NOT NULL AUTO_INCREMENT,
-  `Fecha` date DEFAULT NULL,
-  `HoraInicio` time DEFAULT NULL,
-  `HoraFinal` time DEFAULT NULL,
-  `Mesa` int(11) DEFAULT NULL,
-  `IdReserva` int(11) DEFAULT NULL,
-  PRIMARY KEY (`IdAgenda`),
-  KEY `FK_Agenda_Reserva` (`IdReserva`),
-  CONSTRAINT `FK_Agenda_Reserva` FOREIGN KEY (`IdReserva`) REFERENCES `tblreserva` (`IdReserva`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `tblagenda` */
-
-insert  into `tblagenda`(`IdAgenda`,`Fecha`,`HoraInicio`,`HoraFinal`,`Mesa`,`IdReserva`) values 
-(1,'2024-07-22','15:00:00','17:00:00',4,1);
+(2,'tblzona','ID: 19, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-06'),
+(3,'tblzona','ID: 20, Ubicación: pruevas, Imagen: ZonaComun.webp','DELETE','2024-08-06'),
+(5,'tblUsuarios','ID:30, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-06'),
+(6,'tblpostres','ID: 11, Nombre: Pastel de Chocolate','DELETE','2024-08-06'),
+(7,'tblbebidas','ID: 10, Nombre: Limonada','DELETE','2024-08-06'),
+(8,'tblcomidas','ID: 9, Nombre: Tacos al Pastor','DELETE','2024-08-06'),
+(9,'tblbebidas','ID: 11, Nombre: Limonada','DELETE','2024-08-06'),
+(10,'tblcomidas','ID: 10, Nombre: Tacos al Pastor','DELETE','2024-08-06'),
+(11,'tblpostres','ID: 12, Nombre: Pastel de Chocolate','DELETE','2024-08-06'),
+(12,'tblzona','ID: 22, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-06'),
+(13,'tblzona','ID: 21, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-06'),
+(14,'tblUsuarios','ID:31, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-06'),
+(15,'tblmesa','ID: 33, Clave: M3, Capacidad: 4, Costo: 500.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-06'),
+(16,'tblmesa','ID: 36, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-06'),
+(17,'tblmesa','ID: 37, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-06'),
+(18,'tblmesa','ID: 38, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-06'),
+(19,'tblmesa','ID: 35, Clave: M1, Capacidad: 4, Costo: 50.00, Zona: 4, Imagen: mesa_001.jpg','DELETE','2024-08-06'),
+(20,'tblmesa','ID: 39, Clave: j2, Capacidad: 6, Costo: 1234.00, Zona: 2, Imagen: images.png','DELETE','2024-08-06'),
+(21,'tblbebidas','ID: 12, Nombre: Limonad','DELETE','2024-08-06'),
+(22,'tblUsuarios','ID:32, Nombre:Juan, Email:juan.perez@example.com, Tipo:Empleado','DELETE','2024-08-06'),
+(23,'tblbebidas','ID: 13, Nombre: jabs','DELETE','2024-08-06'),
+(24,'tblcomidas','ID: 11, Nombre: Tacos al Pastor','DELETE','2024-08-06'),
+(25,'tblcomidas','ID: 12, Nombre: Jabs','DELETE','2024-08-06'),
+(26,'tblpostres','ID: 14, Nombre: JABS','DELETE','2024-08-06'),
+(27,'tblpostres','ID: 13, Nombre: Pastel de Chocolate','DELETE','2024-08-06'),
+(28,'tblmesa','ID: 31, Clave: m1, Capacidad: 6, Costo: 300.00, Zona: 1, Imagen: mesa_001.jpg','DELETE','2024-08-06'),
+(29,'tblmesa','ID: 40, Clave: j2, Capacidad: 8, Costo: 1234.00, Zona: 1, Imagen: images.png','DELETE','2024-08-06'),
+(30,'tblzona','ID: 23, Ubicación: pruevas, Imagen: images.png','DELETE','2024-08-06'),
+(31,'tblzona','ID: 24, Ubicación: Zona A, Imagen: zona_a.jpg','DELETE','2024-08-06'),
+(32,NULL,NULL,NULL,'2024-08-06'),
+(33,'tblUsuarios','ID:17, Nombre:Diana, Email:Diana@gmail.com, Tipo:Empleado','DELETE','0000-00-00'),
+(34,'tblUsuarios','ID:25, Nombre:JABSALDAIR, Email:JABSALDAIR@gmail.com, Tipo:Empleado','DELETE','0000-00-00'),
+(35,'tblUsuarios','ID:28, Nombre:Josmar, Email:Josmar1234567890@gmail.com, Tipo:Empleado','DELETE','0000-00-00');
 
 /*Table structure for table `tblbebidas` */
 
@@ -263,9 +246,12 @@ CREATE TABLE `tblpago` (
   KEY `IdReserva` (`IdReserva`),
   CONSTRAINT `tblPago_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `tblcliente` (`IdCliente`),
   CONSTRAINT `tblPago_ibfk_2` FOREIGN KEY (`IdReserva`) REFERENCES `tblreserva` (`IdReserva`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblpago` */
+
+insert  into `tblpago`(`IdPago`,`IdCliente`,`IdReserva`,`Monto`,`Restante`,`FechaPago`) values 
+(1,2,1,1000.00,350.00,'2024-08-07');
 
 /*Table structure for table `tblpostres` */
 
@@ -309,12 +295,12 @@ CREATE TABLE `tblreserva` (
   PRIMARY KEY (`IdReserva`),
   KEY `FK_Reserva_Cliente` (`IdCliente`),
   CONSTRAINT `FK_Reserva_Cliente` FOREIGN KEY (`IdCliente`) REFERENCES `tblcliente` (`IdCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblreserva` */
 
 insert  into `tblreserva`(`IdReserva`,`IdCliente`,`dtFecha`,`HoraInicio`,`HoraFinal`,`vchOcacion`,`NoPersonas`,`Idzona`) values 
-(1,1,'2024-07-22','15:00:00','15:00:00','2',5,2);
+(1,2,'2024-08-07','13:00:00','14:00:00','1',13,1);
 
 /*Table structure for table `tblreservadetalle` */
 
@@ -330,9 +316,15 @@ CREATE TABLE `tblreservadetalle` (
   KEY `FK_ReservaDetalle_Reserva` (`IdReserva`),
   CONSTRAINT `FK_ReservaDetalle_Mesa` FOREIGN KEY (`idMesaAsignada`) REFERENCES `tblmesa` (`IdMesa`),
   CONSTRAINT `FK_ReservaDetalle_Reserva` FOREIGN KEY (`IdReserva`) REFERENCES `tblreserva` (`IdReserva`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblreservadetalle` */
+
+insert  into `tblreservadetalle`(`IdDetalleReserva`,`IdReserva`,`idMesaAsignada`,`fltCosto`) values 
+(1,1,1,300.00),
+(2,1,2,300.00),
+(3,1,5,300.00),
+(4,1,3,450.00);
 
 /*Table structure for table `tblusuarios` */
 
@@ -352,13 +344,10 @@ CREATE TABLE `tblusuarios` (
 /*Data for the table `tblusuarios` */
 
 insert  into `tblusuarios`(`idUsuario`,`vchNombre`,`vchApellidos`,`vchNoTelefono`,`vchEmail`,`vchPassword`,`TipoUsuario`) values 
-(1,'Josmar',NULL,'7712194196','20230026@uthh.edu.mx','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
+(1,'Josmar','Saavedra','7712194196','20230026@uthh.edu.mx','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
 (2,'Aldair','Bautista','4831290696','josmar050116@gmail.com','4fc0dff8cd76a365bce38a5c5e9a39f7','Cliente'),
 (3,'Josmar Aldair','Bautista Saavedra','4831290696','josmar050110@gmail.com','c30d2d6dfe8c5ae3a3e9b9cef0d36f59','Administrador'),
-(14,'JABS','Meraz','4431290696','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado'),
-(17,'Diana','Palacios','4431290698','Diana@gmail.com','81dc9bdb52d04dc20036dbd8313ed055','Empleado'),
-(25,'JABSALDAIR','SAAVEDRA','1234567890','JABSALDAIR@gmail.com','e1d5be1c7f2f456670de3d53c7b54f4a','Empleado'),
-(28,'Josmar','Bautista','0987654321','Josmar1234567890@gmail.com','d545fc3de0730ee98744331a54a5dfaf','Empleado');
+(4,'JABS','Meraz','4431290696','Jabs@gmail.com','827ccb0eea8a706c4c34a16891f84e7b','Empleado');
 
 /*Table structure for table `tblzona` */
 
@@ -369,7 +358,7 @@ CREATE TABLE `tblzona` (
   `vchUbicacion` varchar(100) DEFAULT NULL,
   `vchImagen` varchar(100) NOT NULL,
   PRIMARY KEY (`IdZona`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tblzona` */
 
@@ -377,7 +366,8 @@ insert  into `tblzona`(`IdZona`,`vchUbicacion`,`vchImagen`) values
 (1,'Terrasa VIp','TerrasaVIP.png'),
 (2,'Terrasa','Terrasa.webp'),
 (3,'ZonaVIp','ZonaVIP.webp'),
-(4,'ZonaComun','ZonaComun.webp');
+(4,'ZonaComun','ZonaComun.webp'),
+(25,'mi zona','ZonaComun.webp');
 
 /* Trigger structure for table `tblbebidas` */
 
@@ -537,16 +527,23 @@ END */$$
 
 DELIMITER ;
 
-/* Procedure structure for procedure `ObtenerOcasiones` */
+/* Procedure structure for procedure `ObtenerUltimaReserva` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `ObtenerOcasiones` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `ObtenerUltimaReserva` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerOcasiones`()
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerUltimaReserva`(IN idCliente INT, OUT idReserva INT)
 BEGIN
-    SELECT IdOcasiones, vchNombreOcasiones
-    FROM tblOcasiones;
+    -- Asegúrate de que el nombre de la columna en la cláusula ORDER BY es correcto
+    SELECT idReserva
+    FROM tblreserva
+    WHERE idUsuario = idUsuario
+    ORDER BY fecha_reserva DESC
+    LIMIT 1;
+    
+    -- Asigna el resultado a la variable OUT
+    SET idReserva = (SELECT idReserva FROM reservas WHERE idUsuario = idUsuario ORDER BY fecha_reserva DESC LIMIT 1);
 END */$$
 DELIMITER ;
 
@@ -918,6 +915,19 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spConsultarOcaciones` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarOcaciones` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarOcaciones`()
+BEGIN
+    SELECT IdOcasiones, vchNombreOcasiones
+    FROM tblOcasiones;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spConsultarPostres` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spConsultarPostres` */;
@@ -926,8 +936,86 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarPostres`()
 BEGIN
-	SELECT idPostre, vchnombre, fltPrecio,vchDescripcion, vchImagen
+	SELECT idPostre, vchNombre, fltPrecio,vchDescripcion, vchImagen
 	FROM tblpostres;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spConsultarReservaciones` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarReservaciones` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarReservaciones`(
+    IN pIdCliente INT
+)
+BEGIN
+    SELECT 
+        NombreCompletoCliente,
+        Telefono,
+        CorreoElectronico,
+        IdReserva,
+        FechaReserva,
+        HoraInicio,
+        HoraFinal,
+        vchOcacion,
+        NoPersonas,
+        UbicacionZona,
+        Mesas,
+        CostoTotalMesas,
+        Ocasiones,
+        Monto,
+        Restante,
+        FechaPago
+    FROM vistaClientesConReservas
+    WHERE IdCliente = pIdCliente;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spConsultarReservas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarReservas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarReservas`(
+    IN pFechaReserva DATE
+)
+BEGIN
+    SELECT 
+        IdCliente,
+        NombreCompletoCliente,
+        Telefono,
+        CorreoElectronico,
+        IdReserva,
+        FechaReserva,
+        HoraInicio,
+        HoraFinal,
+        vchOcacion,
+        NoPersonas,
+        UbicacionZona,
+        Mesas,
+        CostoTotalMesas,
+        Ocasiones,
+        Monto,
+        Restante,
+        FechaPago
+    FROM vistaClientesConReservas
+    WHERE FechaReserva = pFechaReserva;
+END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `spConsultarTblEliminadas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultarTblEliminadas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarTblEliminadas`()
+BEGIN
+    -- Seleccionar valores únicos de la columna 'tabla'
+    SELECT DISTINCT tabla FROM bitacora_eliminaciones;
 END */$$
 DELIMITER ;
 
@@ -951,8 +1039,8 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spCrearReserva`(
-    IN nombre VARCHAR(150),
-    IN Apellidos VARCHAR(150),
+    in idCliente int,
+    in telefono VARCHAR(20),
     IN Fecha DATE,
     IN HoraI TIME,
     IN HoraF TIME,
@@ -961,17 +1049,10 @@ DELIMITER $$
     IN Zona INT
 )
 BEGIN
-    DECLARE IdC INT;
-
-    -- Buscar Id del cliente
-    SELECT IdUsuario
-    INTO IdC
-    FROM `tblusuarios`
-    WHERE vchNombre = nombre AND vchApellidos = Apellidos;
 
     -- Crear la reserva
     INSERT INTO tblreserva (IdCliente, dtFecha, HoraInicio, HoraFinal, vchOcacion, NoPersonas, IdZona)
-    VALUES (IdC, Fecha, HoraI, HoraF, Ocacion, NumPersonas, Zona);
+    VALUES (idCliente, Fecha, HoraI, HoraF, Ocacion, NumPersonas, Zona);
 END */$$
 DELIMITER ;
 
@@ -1103,6 +1184,22 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spFiltroBitacora` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spFiltroBitacora` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spFiltroBitacora`(IN p_fecha_accion DATE, IN p_tabla VARCHAR(50))
+BEGIN
+    -- Filtrar la tabla bitacora_eliminaciones con base en la fecha_accion y la tabla proporcionadas
+    SELECT * 
+    FROM bitacora_eliminaciones
+    WHERE DATE(fecha_accion) = p_fecha_accion
+    AND tabla = p_tabla;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spInsertarBebida` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spInsertarBebida` */;
@@ -1188,29 +1285,24 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarPago`(
-    IN Cliente VARCHAR(100),
+    IN pIdCliente VARCHAR(100),
     IN pMonto DECIMAL(10,2),
-    IN pFechaPago DATE
+    IN pRestante DECIMAL(10,2)
 )
 BEGIN
-    DECLARE pIdCliente INT;
     DECLARE pIdReserva INT;
 
-    SELECT IdCliente
-    INTO pIdCliente
-    FROM tblcliente
-    WHERE vchNombre = Cliente;
-
+    -- Obtener el ID de la reserva más reciente del cliente
     SELECT IdReserva
     INTO pIdReserva
     FROM tblreserva
     WHERE IdCliente = pIdCliente
     ORDER BY dtFecha DESC, HoraInicio DESC
-    LIMIT 1;
+    LIMIT 1;  -- Asegura que solo se obtenga la reserva más reciente
 
     -- Insertar el pago en la tabla tblPago
-    INSERT INTO tblPago (IdCliente, IdReserva, Monto, FechaPago)
-    VALUES (pIdCliente, pIdReserva, pMonto, pFechaPago);
+    INSERT INTO tblPago (IdCliente, IdReserva, Monto, Restante, FechaPago)
+    VALUES (pIdCliente, pIdReserva, pMonto, pRestante, CURDATE());
 END */$$
 DELIMITER ;
 
@@ -1315,6 +1407,40 @@ BEGIN
     END IF;
 END */$$
 DELIMITER ;
+
+/*Table structure for table `vistaclientesconreservas` */
+
+DROP TABLE IF EXISTS `vistaclientesconreservas`;
+
+/*!50001 DROP VIEW IF EXISTS `vistaclientesconreservas` */;
+/*!50001 DROP TABLE IF EXISTS `vistaclientesconreservas` */;
+
+/*!50001 CREATE TABLE  `vistaclientesconreservas`(
+ `IdCliente` int(11) ,
+ `NombreCompletoCliente` varchar(41) ,
+ `Telefono` varchar(13) ,
+ `CorreoElectronico` varchar(150) ,
+ `IdReserva` int(11) ,
+ `FechaReserva` date ,
+ `HoraInicio` time ,
+ `HoraFinal` time ,
+ `vchOcacion` varchar(100) ,
+ `NoPersonas` int(11) ,
+ `UbicacionZona` varchar(100) ,
+ `Mesas` mediumtext ,
+ `CostoTotalMesas` decimal(32,2) ,
+ `Ocasiones` varchar(255) ,
+ `Monto` decimal(10,2) ,
+ `Restante` decimal(10,2) ,
+ `FechaPago` date 
+)*/;
+
+/*View structure for view vistaclientesconreservas */
+
+/*!50001 DROP TABLE IF EXISTS `vistaclientesconreservas` */;
+/*!50001 DROP VIEW IF EXISTS `vistaclientesconreservas` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vistaclientesconreservas` AS select `u`.`idUsuario` AS `IdCliente`,concat(`u`.`vchNombre`,' ',`u`.`vchApellidos`) AS `NombreCompletoCliente`,`u`.`vchNoTelefono` AS `Telefono`,`u`.`vchEmail` AS `CorreoElectronico`,`r`.`IdReserva` AS `IdReserva`,`r`.`dtFecha` AS `FechaReserva`,`r`.`HoraInicio` AS `HoraInicio`,`r`.`HoraFinal` AS `HoraFinal`,`r`.`vchOcacion` AS `vchOcacion`,`r`.`NoPersonas` AS `NoPersonas`,`z`.`vchUbicacion` AS `UbicacionZona`,group_concat(`m`.`ClaveMesa` order by `m`.`ClaveMesa` ASC separator ', ') AS `Mesas`,sum(`rd`.`fltCosto`) AS `CostoTotalMesas`,`o`.`vchNombreOcasiones` AS `Ocasiones`,`p`.`Monto` AS `Monto`,`p`.`Restante` AS `Restante`,`p`.`FechaPago` AS `FechaPago` from ((((((`tblusuarios` `u` left join `tblreserva` `r` on(`u`.`idUsuario` = `r`.`IdCliente`)) left join `tblreservadetalle` `rd` on(`r`.`IdReserva` = `rd`.`IdReserva`)) left join `tblmesa` `m` on(`rd`.`idMesaAsignada` = `m`.`IdMesa`)) left join `tblzona` `z` on(`r`.`Idzona` = `z`.`IdZona`)) left join `tblocasiones` `o` on(`r`.`vchOcacion` = `o`.`IdOcasiones`)) left join `tblpago` `p` on(`u`.`idUsuario` = `p`.`IdCliente` and `r`.`IdReserva` = `p`.`IdReserva`)) where `u`.`TipoUsuario` = 'Cliente' group by `u`.`idUsuario`,`u`.`vchNombre`,`u`.`vchApellidos`,`u`.`vchNoTelefono`,`u`.`vchEmail`,`r`.`IdReserva`,`r`.`dtFecha`,`r`.`HoraInicio`,`r`.`HoraFinal`,`r`.`vchOcacion`,`r`.`NoPersonas`,`z`.`vchUbicacion`,`o`.`vchNombreOcasiones`,`p`.`Monto`,`p`.`Restante`,`p`.`FechaPago` */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
