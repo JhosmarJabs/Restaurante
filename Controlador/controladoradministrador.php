@@ -327,15 +327,13 @@ class controladoradministrador
         include_once("Vistas/frmadministrador.php");
     }    
 
-
-
-    public function reportes()
+    public function reporteEliminacion()
     {
         $reporte = new clsReportes(); // Clase que está en el modelo
         if (!empty($_POST)) {
             $tabla = isset($_POST['txttabla']) ? $_POST['txttabla'] : NULL;
             $fecha = isset($_POST['txtfecha']) ? $_POST['txtfecha'] : NULL;
-            $Consulta = $reporte->filtrarBitacoraPorFechaYTabla($fecha, $tabla);  
+            $Consulta = $reporte->filtroBitacora($fecha, $tabla);  
             // Crear el objeto FPDF
             $pdf = new FPDF('L', 'mm', 'A4'); // Agregar orientación horizontal
             // Agregar una página
@@ -358,7 +356,7 @@ class controladoradministrador
                 $pdf->Cell(40, 8, 'Fecha de accion', 1, 0, 'C');
                 $pdf->Ln(); // Salto de línea después de los encabezados
                 // Establecer la fuente y el tamaño del contenido de la tabla
-                $pdf->SetFont('Arial', '', 10);
+                $pdf->SetFont('Arial', '', 7);
                 // Imprimir los datos de la tabla
                 while ($row = $Consulta->fetch_assoc()) {
                     $pdf->Cell(15, 8, $row["idBitacora"], 1, 0, 'L');
@@ -381,9 +379,81 @@ class controladoradministrador
             exit();
         }
     }
-    
-    
-    
+    public function reporteReservas()
+    {
+        $reporte = new clsReportes(); // Clase que está en el modelo
+        if (!empty($_POST)) {
+            $fecha = isset($_POST['txtfechaR']) ? $_POST['txtfechaR'] : NULL;
+            $Consulta = $reporte->ConsultaReservas($fecha);  
+            
+            // Crear el objeto FPDF
+            $pdf = new FPDF('L', 'mm', 'A4'); // Agregar orientación horizontal
+            // Agregar una página
+            $pdf->AddPage();
+            // $pdf->Cell(190,30,$pdf->Image('./img/becas.png',130,12,60,30),0,1,'R');
+            // Establecer la fuente y el tamaño del título
+            $pdf->SetFont('Arial', 'B', 20);
+            $pdf->Cell(0, 20, utf8_decode('Reporte de Reservas'), 0, 1, 'C');
+            // Consulta a la base de datos
+            // Centrar la tabla
+            $pdf->SetLeftMargin(10);
+            if ($Consulta->num_rows > 0) {
+                // Establecer la fuente y el tamaño del encabezado de la tabla
+                $pdf->SetFont('Arial', 'B', 7);
+                // Imprimir los encabezados de la tabla
+                $pdf->Cell(5, 8, 'ID', 1, 0, 'C');
+                $pdf->Cell(25, 8, 'Nombre Cliente', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Teléfono', 1, 0, 'C');
+                $pdf->Cell(40, 8, 'Correo Electrónico', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Fecha', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Hora Inicio', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Hora Final', 1, 0, 'C');
+                // $pdf->Cell(20, 8, 'Ocasión', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Personas', 1, 0, 'C');
+                $pdf->Cell(20, 8, 'Zona', 1, 0, 'C');
+                $pdf->Cell(40, 8, 'Mesas', 1, 0, 'C');
+                $pdf->Cell(20, 8, 'Ocasiones', 1, 0, 'C');
+                $pdf->Cell(12, 8, 'Total', 1, 0, 'C');
+                $pdf->Cell(12, 8, 'Resta', 1, 0, 'C');
+                $pdf->Cell(12, 8, 'Monto', 1, 0, 'C');
+                $pdf->Cell(15, 8, 'Fecha Pago', 1, 0, 'C');
+                $pdf->Ln(); // Salto de línea después de los encabezados
+                
+                // Establecer la fuente y el tamaño del contenido de la tabla
+                $pdf->SetFont('Arial', '', 7);
+                // Imprimir los datos de la tabla
+                while ($row = $Consulta->fetch_assoc()) {
+                    $pdf->Cell(5, 8, $row["IdReserva"], 1, 0, 'L');
+                    $pdf->Cell(25, 8, $row["NombreCompletoCliente"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["Telefono"], 1, 0, 'L');
+                    $pdf->Cell(40, 8, $row["CorreoElectronico"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["FechaReserva"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["HoraInicio"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["HoraFinal"], 1, 0, 'L');
+                    // $pdf->Cell(20, 8, $row["vchOcacion"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["NoPersonas"], 1, 0, 'L');
+                    $pdf->Cell(20, 8, $row["UbicacionZona"], 1, 0, 'L');
+                    $pdf->Cell(40, 8, $row["Mesas"], 1, 0, 'L');
+                    $pdf->Cell(20, 8, $row["Ocasiones"], 1, 0, 'L');
+                    $pdf->Cell(12, 8, $row["CostoTotalMesas"], 1, 0, 'L');
+                    $pdf->Cell(12 , 8, $row["Monto"], 1, 0, 'L');
+                    $pdf->Cell(12, 8, $row["Restante"], 1, 0, 'L');
+                    $pdf->Cell(15, 8, $row["FechaPago"], 1, 0, 'L');
+                    $pdf->Ln(); // Salto de línea después de cada fila
+                }
+                // Salto de línea después de la tabla
+                $pdf->Ln(10);
+                $reporte->conectar->close();
+                // Mostrar el PDF
+                $pdf->Output();
+            } else {
+                echo "No se encontraron registros.";
+            }
+        } else {
+            header('Location: /restaurante/index?clase=controladoradministrador&metodo=vistareportes');
+            exit();
+        }
+    }
     public function cerrar()
 	{		
 		session_destroy();

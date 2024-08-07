@@ -30,7 +30,7 @@
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Inicio</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=menu">Menu</a></li>
                 <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=reservas">Reserva</a></li>
-                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Contactanos</a></li>
+                <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=Historial">Historial</a></li>
             </ul>
             <a href="/restaurante/index?clase=controladorcliente&metodo=cerrar" class="action_btn">Cerrar Sesion</a>
             <div class="toggle_btn">
@@ -41,7 +41,7 @@
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Inicio</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=menu">Menu</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=reservas">Reserva</a></li>
-            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=inicio">Contactanos</a></li>
+            <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=Historial">Historial</a></li>
             <li class="link-navbar"><a class="amarillo" href="/restaurante/index?clase=controladorcliente&metodo=cerrar" class="action_btn">Cerrar Sesion</a></li>
         </div>
     </header>

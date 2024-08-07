@@ -1,7 +1,7 @@
 <div class="contenedor-reserva">
-        <div class="rejilla-reserva">
-            <form class="datos-formulario-reserva" action="/restaurante/index?clase=controladorcliente&metodo=Solicitar" method="POST">
-                <h1 class="titulo-reserva">Formulario de reservacion</h1>
+    <div class="rejilla-reserva">
+        <form class="datos-formulario-reserva" action="/restaurante/index?clase=controladorcliente&metodo=Solicitar" method="POST">
+            <h1 class="titulo-reserva">Formulario de reservacion</h1>
                 <div class="espacio-vertical-reserva">
                     <label for="nombre" class="etiqueta-reserva">Nombre del cliente</label>
                     <div class="rejilla-reserva columnas-2-reserva gap-pequeno-reserva">
@@ -45,8 +45,7 @@
                     </div>
                     <div id="6">
                         <label for="ocasion" class="etiqueta-reserva">Ocacion</label>
-
-                        <select class="input-reserva max-reserva" id="Ocacion" name="txtOcacion" required>
+                        <select class="input-reserva max-reserva" id="Ocacion" name="txtOcacion" style="width: 94%;" required>
                             <?php
                             if (isset($idOca) && $idOca !== null) {
                                 while ($Ocacion = $idOca->fetch_object()) {
@@ -66,7 +65,7 @@
                     </div>
                     <div id="8">
                         <label for="zona-preferencia" class="etiqueta-reserva">Zona de preferencia</label>
-                        <select class="input-reserva max-reserva" id="zona-reserva" name="txtZonaReserva" required>
+                        <select class="input-reserva max-reserva" id="zona-reserva" name="txtZonaReserva" style="width: 94%;" required>
                             <?php
                             if (isset($datosZonas) && $datosZonas !== null) {
                                 while ($zonaRes = $datosZonas->fetch_object()) {
@@ -80,39 +79,19 @@
                     </div>
                     <button class="input-reserva centrado-reserva boton-reserva maximo-reserva" value="btnSolicitar">Solicitar</button>
                 </div>
-
-                </div>
-                <script>
-                    const selectElement = document.getElementById('invitados');
-                    for (let i = 2; i <= 15; i++) {
-                        const option = document.createElement('option');
-                        option.value = i;
-                        option.textContent = i;
-                        selectElement.appendChild(option);
-                    }
-                </script>
-            </form>
-            <!-- <div class="datos-reservas-reserva">
-                <h2 class="subtitulo-reserva">Reservaciones Realizadas</h2>
-                <div>
-                    <table class="tabla-reserva">
-                    <tr>
-                        <th>Numero de reservacion</th>
-                        <th>Fecha de solicitud</th>
-                        <th>Estado</th>
-                        <th>Movimiento</th>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button class="input-reserva centrado-reserva boton-reserva maximo-reserva">Reservar</button></td>
-                    </tr>
-                    </table>
-                </div>
-            </div> -->
-        </div>
+            </div>
+            <script>
+                const selectElement = document.getElementById('invitados');
+                for (let i = 2; i <= 15; i++) {
+                    const option = document.createElement('option');
+                    option.value = i;
+                    option.textContent = i;
+                    selectElement.appendChild(option);
+                }
+            </script>
+        </form>
     </div>
+</div>
 
     <!-- <script>
         const selectElement = document.getElementById('invitados');

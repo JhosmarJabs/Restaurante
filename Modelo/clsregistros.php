@@ -72,17 +72,16 @@ class clsregistros extends clsconexion{
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
     public function ConsultaOcaciones() {
-        $sql = "CALL ObtenerOcasiones();";
+        $sql = "CALL spConsultarOcaciones();";
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
-    // Altacliente
-    public function Solisitar($nombre, $apellidos, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia){
-        $sql = "CALL spCrearReserva('$nombre', '$apellidos', '$telefono', '$fechaReservacion', '$horaInicio', '$horaFinal', '$ocasion', $invitados, $zonaPreferencia);";
+    // AltaReservas vista cliente
+    public function Solisitar($IdCliente, $telefono, $fechaReservacion, $horaInicio, $horaFinal, $ocasion, $invitados, $zonaPreferencia){
+        $sql = "CALL spCrearReserva('$IdCliente', '$telefono', '$fechaReservacion', '$horaInicio', '$horaFinal', '$ocasion', $invitados, $zonaPreferencia);";
         $resultadoClientes = $this->conectar->query($sql);
         return $datos = $resultadoClientes ? $resultadoClientes : null;
     }
-    
     public function ConsultaCosto($idres) {
         // Ejecutar ambas consultas
         $sql = "CALL SumaCostoUltimaReserva($idres, @TotalCosto);";
@@ -94,14 +93,11 @@ class clsregistros extends clsconexion{
             return null;
         }
     }
-
     public function ConsultaTablas(){
-        $sql = "CALL obtenerTablasUnicas();";
+        $sql = "CALL spConsultarTblEliminadas();";
         $resultadoTablas = $this->conectar->query($sql);
         return $datos = $resultadoTablas ? $resultadoTablas : null;
-
     }
-
     public function PagoReserva($IdCliente, $anticipo, $total){
         $sql = "CALL spInsertarPago($IdCliente, $anticipo, $total);";
         $resultadoClientes = $this->conectar->query($sql);
