@@ -828,6 +828,32 @@ BEGIN
 END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `spConsultaProductosDetalle` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `spConsultaProductosDetalle` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultaProductosDetalle`(IN Id INT, IN Tipo VARCHAR(50))
+BEGIN
+    IF Tipo = 'Comida' THEN
+        SELECT idComida AS idProducto, vchNombre, fltPrecio, vchDescripcion, vchImagen
+        FROM tblcomidas
+        WHERE idComida = Id;
+    ELSEIF Tipo = 'Bebida' THEN
+        SELECT idBebida AS idProducto, vchNombre, fltPrecio, vchDescripcion, vchImagen
+        FROM tblbebidas
+        WHERE idBebida = Id;
+    ELSEIF Tipo = 'Postre' THEN
+        SELECT idPostre AS idProducto, vchNombre, fltPrecio, vchDescripcion, vchImagen
+        FROM tblpostres
+        WHERE idPostre = Id;
+    ELSE
+        SELECT 'Tipo no válido' AS mensaje;
+    END IF;
+END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `spConsultarBebidas` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `spConsultarBebidas` */;
