@@ -18,7 +18,7 @@
                         if (isset($zonas) && $zonas !== null) {
                             while ($allzona = $zonas->fetch_object()) {
                                 echo '<li class="tarjeta">';
-                                echo '<img class="imagen-tarjeta"src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion . '" >';
+                                echo '<img class="imagen-tarjeta" src="img/Zonas/' . $allzona->vchImagen . '" alt="Imagen de la ' . $allzona->vchUbicacion .  '">';
                                 echo '<h3 class="titulo-tarjeta">'.$allzona->vchUbicacion.'</h3>';
                                 echo '</li>';
                             }
@@ -33,21 +33,20 @@
             <div class="contenedor-catalogo" id="catalogo-mesas">
                 <i class="fa-solid fa-angle-left" data-catalogo="mesas"></i>
                 <ul class="rejilla" id="rejilla-mesas">
-                <?php
-                        if (isset($mesas) && $mesas !== null) {
-                            while ($allMesas = $mesas->fetch_object()) {
-                                echo '<li class="tarjeta">';
-                                echo '<img class="imagen-tarjeta"src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '" >';
-                                echo '<h3 class="titulo-tarjeta">'.$allMesas->ClaveMesa.'</h3>';
-                                echo '<p class="descripcion-tarjeta">'.$allMesas->Capasidad.'</p>';
-                                echo '<p class="precio-tarjeta">'.$allMesas->vchUbicacion.'</p>';
-                                echo '</li>';
-                            }
-                        }else{
-                            echo 'No se encontraron zonas.';
+                    <?php
+                    if (isset($mesas) && $mesas !== null) {
+                        while ($allMesas = $mesas->fetch_object()) {
+                            echo '<li class="tarjeta">';
+                            echo '<img class="imagen-tarjeta" src="img/Mesas/' . $allMesas->vchImagen . '" alt="Imagen de la ' . $allMesas->vchUbicacion . '">';
+                            echo '<h3 class="titulo-tarjeta">'.$allMesas->ClaveMesa.'</h3>';
+                            echo '<p class="descripcion-tarjeta">'.$allMesas->Capasidad.'</p>';
+                            echo '<p class="precio-tarjeta">'.$allMesas->vchUbicacion.'</p>';
+                            echo '</li>';
                         }
+                    } else {
+                        echo 'No se encontraron zonas.';
+                    }
                     ?>
-                </ul>
                 </ul>
                 <i class="fa-solid fa-angle-right" data-catalogo="mesas"></i>
             </div>

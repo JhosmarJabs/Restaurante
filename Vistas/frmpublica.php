@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="Estilos/menu.css"> 
     <link rel="stylesheet" href="Estilos/login.css">
     <link rel="stylesheet" href="Estilos/reservas.css">
+    <link rel="stylesheet" href="Estilos/detalles.css">
     <title>Huejutla Sabores</title>
 </head>
 <body>

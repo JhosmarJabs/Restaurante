@@ -125,5 +125,23 @@ class controladorpublico
 		$vista="Vistas/Publica/frmmenu.php";
         include_once("Vistas/frmpublica.php");
     }
+
+    public function Detalles()
+    {   
+        $idCon = isset($_GET['id']) ? $_GET['id'] : null; // Captura el ID de la URL
+        $tipo = isset($_GET['Tipo']) ? $_GET['Tipo'] : null; // Captura el Tipo de la URL
+        $ConsultaProductos = new clsregistros();
+        
+        if($idCon && $tipo) { // Verificamos que ambos parámetros estén presentes
+            $producto = $ConsultaProductos->ConsultaProductosDetalle($idCon, $tipo);
+        } else {
+            echo "No se proporcionó un ID o Tipo válido.";
+        }
+        $vista = "Vistas/Publica/frmdetalles.php";
+        include_once("Vistas/frmpublica.php");
+    }
+    
+    
+    
 }
 ?>

@@ -50,6 +50,11 @@ class clsregistros extends clsconexion{
         $resultadoMesas = $this->conectar->query($sql);
         return $resultadoMesas ? $resultadoMesas : null;
     }
+        public function ConsultaProductosDetalle($idCon, $tipo) {
+            $sql = "CALL spConsultaProductosDetalle($idCon, '$tipo');";
+            $resultadoMesas = $this->conectar->query($sql);
+            return $resultadoMesas ? $resultadoMesas : null;
+        }
     public function ConsultaPostres() {
         $sql = "CALL spConsultarPostres();";
         $resultadoPostres = $this->conectar->query($sql);
@@ -153,6 +158,10 @@ class clsregistros extends clsconexion{
     public function EliminarBebida($id) {
         $sql = "CALL spEliminarBebida($id);";
         $this->conectar->query($sql);
-    }   
+    }
+
+    public function DetallesDatos(){
+        
+    }
 }
 ?>
